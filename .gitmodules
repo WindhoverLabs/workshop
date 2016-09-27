@@ -13,3 +13,6 @@
 [submodule "sage"]
 	path = sage
 	url = ssh://git@bitbucket.windhoverlabs.com:7999/wkshp/sage.git
+[submodule "yamcs-studio"]
+	path = yamcs-studio
+	url = ssh://git@bitbucket.windhoverlabs.com:7999/wkshp/yamcs-studio.git
