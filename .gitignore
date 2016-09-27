@@ -1,0 +1,7 @@
+**/*~
+**/elf2cfetbl/elf2cfetbl
+*.box
+.vagrant
+**/language.settings.xml
+.settings
+gmon.out
