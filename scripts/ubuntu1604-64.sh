@@ -9,14 +9,17 @@ WORKSHOP_BASEDIR=$PWD
 
 # Install the prereqs
 #sudo apt-get -y update
-sudo apt-get -y install eclipse eclipse-cdt g++ g++-multilib git gitk openjdk-8-jdk cinnamon maven libc-bin libc-dev-bin libc6-dev rpm nodejs-legacy npm
+sudo apt-get -y install eclipse eclipse-cdt g++ g++-multilib git gitk openjdk-8-jdk cinnamon maven libc-bin libc-dev-bin libc6-dev rpm nodejs-legacy npm alien
 sudo npm -g install bower gulp
-#cp -R /vagrant/M2 ~/.m2
 
 # Build YAMCS
-#cd ${WORKSHOP_BASEDIR}/yamcs
-#mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-#mvn -Dsurefire.useFile=false test
+cd ${WORKSHOP_BASEDIR}/yamcs
+./make-rpm.sh
+mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+./make-client-package.sh
+sudo useradd -r yamcs
+sudo alien --scripts --install ~/rpmbuild/RPMS/noarch/yamcs-*
+sudo rm -Rf /opt/yamcs/cache /opt/yamcs/etc /opt/yamcs/log /opt/yamcs/mdb
 
 #sudo git clone --recursive ssh://bitbucket.windhoverlabs.com/scm/wor/yamcs.git /opt/yamcs
 

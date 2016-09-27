@@ -1,9 +1,6 @@
 [submodule "yamcs"]
 	path = yamcs
 	url = ssh://git@bitbucket.windhoverlabs.com:7999/wkshp/yamcs.git
-[submodule "yamcs-studio"]
-	path = yamcs-studio
-	url = ssh://git@bitbucket.windhoverlabs.com:7999/wkshp/yamcs-studio.git
 [submodule "M2"]
 	path = M2
 	url = ssh://git@bitbucket.windhoverlabs.com:7999/wkshp/M2.git
