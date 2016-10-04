@@ -37,12 +37,12 @@ sudo alien -c ~/rpmbuild/RPMS/noarch/yamcs-*
 sudo rm -Rf /opt/yamcs/cache /opt/yamcs/etc /opt/yamcs/log /opt/yamcs/mdb
 
 # Build YAMCS Studio
-cd ${WORKSHOP_BASEDIR}/yamcs-studio
-ln -s ../yamcs yamcs
-#mvn install -DskipTests -f yamcs/pom.xml
-sed "s#REPLACE_WITH_LOCAL_P2_REPO#"`pwd`/css/local_p2_repository"#" css/settings_template.xml >css/settings.xml
-mvn verify -f yamcs-studio-osgi/pom.xml -s css/settings.xml -Pcss-for-yamcs,travis
-mvn verify -f yamcs-studio-tycho/pom.xml -s css/settings.xml -Pcss-for-yamcs,travis
+#cd ${WORKSHOP_BASEDIR}/yamcs-studio
+#ln -s ../yamcs yamcs
+##mvn install -DskipTests -f yamcs/pom.xml
+#sed "s#REPLACE_WITH_LOCAL_P2_REPO#"`pwd`/css/local_p2_repository"#" css/settings_template.xml >css/settings.xml
+#mvn verify -f yamcs-studio-osgi/pom.xml -s css/settings.xml -Pcss-for-yamcs,travis
+#mvn verify -f yamcs-studio-tycho/pom.xml -s css/settings.xml -Pcss-for-yamcs,travis
 
 # Install YAMCS Studio
 # sudo wget https://github.com/yamcs/yamcs-studio/releases/download/v1.0.0-beta.29/yamcs-studio-1.0.0-SNAPSHOT-linux.gtk.x86_64.tar.gz -O - | sudo tar -xz -C /opt
