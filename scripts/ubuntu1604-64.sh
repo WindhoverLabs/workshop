@@ -27,14 +27,14 @@ source ~/.bashrc
 
 
 # Build YAMCS
-cd ${WORKSHOP_BASEDIR}/yamcs
-mvn -Dsurefire.useFile=false test
-mvn install -DskipTests=true
-./make-client-package.sh
-./make-rpm.sh
-sudo useradd -r yamcs
-sudo alien -c ~/rpmbuild/RPMS/noarch/yamcs-*
-sudo rm -Rf /opt/yamcs/cache /opt/yamcs/etc /opt/yamcs/log /opt/yamcs/mdb
+#cd ${WORKSHOP_BASEDIR}/yamcs
+#mvn -Dsurefire.useFile=false test
+#mvn install -DskipTests=true
+#./make-client-package.sh
+#./make-rpm.sh
+#sudo useradd -r yamcs
+#sudo alien -c ~/rpmbuild/RPMS/noarch/yamcs-*
+#sudo rm -Rf /opt/yamcs/cache /opt/yamcs/etc /opt/yamcs/log /opt/yamcs/mdb
 
 # Build YAMCS Studio
 #cd ${WORKSHOP_BASEDIR}/yamcs-studio
