@@ -35,6 +35,7 @@ wget http://www.windhoverlabs.com/releases/yamcs/yamcs-0.29.5+rbdbf495-10.noarch
 sudo useradd -r yamcs
 sudo alien --scripts -i yamcs-0.29.5+rbdbf495-10.noarch.rpm
 rm yamcs-0.29.5+rbdbf495-10.noarch.rpm
+sudo chown -R root:root /opt/yamcs
 sudo rm -Rf /opt/yamcs/cache
 sudo rm -Rf /opt/yamcs/etc
 sudo rm -Rf /opt/yamcs/log
@@ -45,6 +46,7 @@ wget http://www.windhoverlabs.com/releases/yamcs-studio/yamcs-studio-1.0.0-SNAPS
 tar -xzf yamcs-studio-1.0.0-SNAPSHOT-linux.gtk.x86_64.tar.gz
 sudo mv yamcs-studio-1.0.0-SNAPSHOT /opt/yamcs-studio
 sudo chown -R root:root /opt/yamcs-studio
+rm yamcs-studio-1.0.0-SNAPSHOT-linux.gtk.x86_64.tar.gz
 
 # Install YAMCS CFS plugin
 wget http://www.windhoverlabs.com/releases/yamcs-cfs/yamcs-cfs-1.0.1.jar
