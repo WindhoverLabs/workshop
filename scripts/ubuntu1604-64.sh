@@ -4,10 +4,6 @@ cd "$(dirname "$0")"
 cd ..
 WORKSHOP_BASEDIR=$PWD
 
-# Source the main setvars.sh script to get all the CFS environment variables
-cd ..
-source setvars.sh
-
 # Install the prereqs
 export DEBIAN_FRONTEND=noninteractive
 sudo apt-get -y update
