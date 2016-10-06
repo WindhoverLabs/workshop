@@ -5,8 +5,8 @@ cd ..
 WORKSHOP_BASEDIR=$PWD
 
 # Source the main setvars.sh script to get all the CFS environment variables
-#cd ..
-#source setvars.sh
+cd ..
+source setvars.sh
 
 # Install the prereqs
 export DEBIAN_FRONTEND=noninteractive
@@ -61,22 +61,24 @@ sudo mv yamcs-cfs-1.0.1.jar /opt/yamcs/lib
 sudo chown -R root:root /opt/yamcs/lib
 
 # Install Sage
-wget http://www.windhoverlabs.com/releases/sage/sage-1.0.0.tar.gz
+wget http://www.windhoverlabs.com/releases/sage/sage-1.0.0+2.tar.gz
 tar -xzf sage-1.0.0+2.tar.gz
 cd sage
 npm install
 bower install
-cd ..
-sudo mv -R sage /opt/sage
+cd $WORKSHOP_BASEDIR
+sudo mv sage /opt/sage
 sudo chown -R root:root /opt/sage
 rm -Rf sage-1.0.0+2.tar.gz
 
 # Install Eclipse
+echo "WORKSHOP_BASEDIR = $WORKSHOP_BASEDIR"
 wget http://mirror.csclub.uwaterloo.ca/eclipse/technology/epp/downloads/release/oxygen/M2/eclipse-cpp-oxygen-M2-linux-gtk-x86_64.tar.gz
 tar -xzf eclipse-cpp-oxygen-M2-linux-gtk-x86_64.tar.gz
+sudo mkdir /opt/eclipse
 sudo mv eclipse /opt/eclipse/4.7
-sudo chown -R root:root /opt/eclipse
-echo 'export PATH="/opt/eclipse/4.7:\$PATH"'>>~/.bashrc
+sudo chown root:root /opt/eclipse
+echo "export PATH=/opt/eclipse/4.7:$PATH" >> ~/.bashrc
 rm eclipse-cpp-oxygen-M2-linux-gtk-x86_64.tar.gz
 
 # Setup and build the softsim build
