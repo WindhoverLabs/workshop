@@ -38,10 +38,10 @@ sudo apt-get install -y cinnamon-desktop-environment
 #sudo cp /usr/share/backgrounds/Black_hole_by_Marek_Koteluk.jpg /usr/share/images/desktop-base/desktop-background
 
 # Install YAMCS
-wget http://www.windhoverlabs.com/releases/yamcs/yamcs-0.29.5+.noarch.rpm
+wget http://www.windhoverlabs.com/releases/yamcs/yamcs-0.29.5+re5cacd5-10.noarch.rpm
 sudo useradd -r yamcs
-sudo alien --scripts -i yamcs-0.29.5+.noarch.rpm
-rm yamcs-0.29.5+rbdbf495-10.noarch.rpm
+sudo alien --scripts -i yamcs-0.29.5+re5cacd5-10.noarch.rpm
+rm yamcs-0.29.5+re5cacd5-10.noarch.rpm
 sudo chown -R root:root /opt/yamcs
 sudo rm -Rf /opt/yamcs/cache
 sudo rm -Rf /opt/yamcs/etc
