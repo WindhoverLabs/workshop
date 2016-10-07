@@ -40,7 +40,8 @@ sudo alien --scripts -i yamcs-0.29.5+re5cacd5-10.noarch.rpm
 rm yamcs-0.29.5+re5cacd5-10.noarch.rpm
 sudo chown -R root:root /opt/yamcs
 sudo rm -Rf /opt/yamcs/cache
-sudo rm -Rf /opt/yamcs/etc
+sudo rm -Rf /opt/yamcs/etc/*
+sudo cp yamcs/* /opt/yamcs/etc/
 sudo rm -Rf /opt/yamcs/log
 sudo rm -Rf /opt/yamcs/mdb
 
