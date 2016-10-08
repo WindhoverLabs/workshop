@@ -6,7 +6,7 @@
     <security-enabled>true</security-enabled>
     <security-invalidation-interval>60000</security-invalidation-interval>
     <journal-type>NIO</journal-type>
-
+    <journal-directory>/tmp/yamcs_data</journal-directory>
 
 
     <management-notification-address>hornetq.notifications</management-notification-address>
