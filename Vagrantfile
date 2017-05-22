@@ -47,8 +47,9 @@ Vagrant.configure(2) do |config|
     # Display the VirtualBox GUI when booting the machine
     vb.gui = false
 
-    # This is to prevent kernel panic when building on the buil server
-    vb.customize ["modifyvm", :id, "--chipset", "ich9"]
+    # This is to prevent kernel panic when building on the build server
+    #vb.customize ["modifyvm", :id, "--chipset", "ich9"]
+    vb.customize ["modifyvm", :id, "--accelerate3d", "off"]
 
   #
   #  # Customize the amount of memory on the VM:
