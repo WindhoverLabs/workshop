@@ -12,7 +12,8 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "boxcutter/ubuntu1604-desktop"
+  config.vm.box = "windhover/workspace-ubuntu1604"
+  config.ssh.insert_key = false
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -45,7 +46,7 @@ Vagrant.configure(2) do |config|
   #
   config.vm.provider "virtualbox" do |vb|
     # Display the VirtualBox GUI when booting the machine
-    vb.gui = false
+    vb.gui = true
 
     # This is to prevent kernel panic when building on the build server
     #vb.customize ["modifyvm", :id, "--chipset", "ich9"]
