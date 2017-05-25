@@ -45,7 +45,7 @@ sudo apt-get purge ubuntu-desktop unity-*
 # Install YAMCS
 ###wget http://www.windhoverlabs.com/releases/yamcs/yamcs-0.29.5+re5cacd5-10.noarch.rpm
 sudo useradd -r yamcs
-sudo alien --scripts -i /opt/releases/yamcs/yamcs-3.2.2+rd8e5dcf-10.noarch.rpm
+sudo alien --scripts -i yamcs-3.2.2+rd8e5dcf-10.noarch.rpm
 sudo chown -R root:root /opt/yamcs
 sudo rm -Rf /opt/yamcs/cache
 sudo rm -Rf /opt/yamcs/etc/*
@@ -62,7 +62,7 @@ sudo rm -Rf /opt/yamcs/mdb
 
 # Install YAMCS CFS plugin
 ###wget http://www.windhoverlabs.com/releases/yamcs-cfs/yamcs-cfs-1.0.1.jar
-sudo cp /opt/releases/yamcs-cfs/yamcs-cfs-1.0.3.jar /opt/yamcs/lib
+sudo cp yamcs-cfs-1.0.3.jar /opt/yamcs/lib
 sudo chown -R root:root /opt/yamcs/lib
 
 # Install Sage
