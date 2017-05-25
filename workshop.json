@@ -1,0 +1,6 @@
+{
+    "description": "This box contains Ubuntu 16.04 LTS 64-bit preconfigured with Airliner development tools.",
+    "name": "workshop",
+    "versions": [
+    ]
+}
