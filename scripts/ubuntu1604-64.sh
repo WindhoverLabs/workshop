@@ -29,21 +29,11 @@ echo 'export JAVA_HOME="/usr/lib/jvm/java-8-oracle"' >> ~/.bashrc
 source ~/.bashrc
 
 # Make the desktop look good
-###sudo apt-get install -y cinnamon-desktop-environment
-#  Hack to change desktop image
-###sudo cp /usr/share/backgrounds/Black_hole_by_Marek_Koteluk.jpg /usr/share/images/desktop-base/desktop-background
-###sudo apt-get install -y gdm
-###sudo dpkg-reconfigure gdm
-###sudo apt-get install xfce4
-###sudo dpkg-reconfigure lightdm
-###sudo apt-get remove -y unity
-###sudo apt-get remove -y lightdm
-###sudo apt-get -y autoremove
 sudo apt-get install -y xubuntu-desktop
-sudo apt-get purge ubuntu-desktop unity-*
+sudo apt-get purge -y ubuntu-desktop unity-*
+sudo apt-get -y autoremove
 
 # Install YAMCS
-###wget http://www.windhoverlabs.com/releases/yamcs/yamcs-0.29.5+re5cacd5-10.noarch.rpm
 sudo useradd -r yamcs
 sudo alien --scripts -i yamcs-3.2.2+rd8e5dcf-10.noarch.rpm
 sudo chown -R root:root /opt/yamcs
@@ -61,12 +51,10 @@ sudo rm -Rf /opt/yamcs/mdb
 ###rm yamcs-studio-1.0.0-SNAPSHOT-linux.gtk.x86_64.tar.gz
 
 # Install YAMCS CFS plugin
-###wget http://www.windhoverlabs.com/releases/yamcs-cfs/yamcs-cfs-1.0.1.jar
 sudo cp yamcs-cfs-1.0.3.jar /opt/yamcs/lib
 sudo chown -R root:root /opt/yamcs/lib
 
 # Install Sage
-###wget http://www.windhoverlabs.com/releases/sage/sage-1.0.0+2.tar.gz
 ###tar -xzf sage-1.0.0+2.tar.gz
 ###cd sage
 ###npm install
