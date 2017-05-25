@@ -46,7 +46,7 @@ Vagrant.configure(2) do |config|
   #
   config.vm.provider "virtualbox" do |vb|
     # Display the VirtualBox GUI when booting the machine
-    vb.gui = true
+    vb.gui = false
 
     # This is to prevent kernel panic when building on the build server
     #vb.customize ["modifyvm", :id, "--chipset", "ich9"]
