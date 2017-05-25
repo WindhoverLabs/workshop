@@ -7,7 +7,7 @@ WORKSHOP_BASEDIR=$PWD
 # Install the prereqs
 export DEBIAN_FRONTEND=noninteractive
 sudo apt-get -y update
-sudo apt-get -y install eclipse eclipse-cdt g++ g++-multilib git gitk openjdk-8-jdk cinnamon maven libc-bin libc-dev-bin libc6-dev rpm nodejs-legacy npm alien
+sudo apt-get -y install g++ g++-multilib git gitk openjdk-8-jdk cinnamon maven libc-bin libc-dev-bin libc6-dev rpm nodejs-legacy npm alien
 sudo npm -g install bower gulp
 
 # Setup locales.  The most current Ubuntu 16.04 version has a bug causing the terminal
@@ -29,15 +29,23 @@ echo 'export JAVA_HOME="/usr/lib/jvm/java-8-oracle"' >> ~/.bashrc
 source ~/.bashrc
 
 # Make the desktop look good
-sudo apt-get install -y cinnamon-desktop-environment
+###sudo apt-get install -y cinnamon-desktop-environment
 #  Hack to change desktop image
-#sudo cp /usr/share/backgrounds/Black_hole_by_Marek_Koteluk.jpg /usr/share/images/desktop-base/desktop-background
+###sudo cp /usr/share/backgrounds/Black_hole_by_Marek_Koteluk.jpg /usr/share/images/desktop-base/desktop-background
+###sudo apt-get install -y gdm
+###sudo dpkg-reconfigure gdm
+###sudo apt-get install xfce4
+###sudo dpkg-reconfigure lightdm
+###sudo apt-get remove -y unity
+###sudo apt-get remove -y lightdm
+###sudo apt-get -y autoremove
+sudo apt-get install -y xubuntu-desktop
+sudo apt-get purge ubuntu-desktop unity-*
 
 # Install YAMCS
-wget http://www.windhoverlabs.com/releases/yamcs/yamcs-0.29.5+re5cacd5-10.noarch.rpm
+###wget http://www.windhoverlabs.com/releases/yamcs/yamcs-0.29.5+re5cacd5-10.noarch.rpm
 sudo useradd -r yamcs
-sudo alien --scripts -i yamcs-0.29.5+re5cacd5-10.noarch.rpm
-rm yamcs-0.29.5+re5cacd5-10.noarch.rpm
+sudo alien --scripts -i yamcs-3.2.2+rd8e5dcf-10.noarch.rpm
 sudo chown -R root:root /opt/yamcs
 sudo rm -Rf /opt/yamcs/cache
 sudo rm -Rf /opt/yamcs/etc/*
@@ -46,37 +54,37 @@ sudo rm -Rf /opt/yamcs/log
 sudo rm -Rf /opt/yamcs/mdb
 
 # Install YAMCS Studio
-wget http://www.windhoverlabs.com/releases/yamcs-studio/yamcs-studio-1.0.0-SNAPSHOT-linux.gtk.x86_64.tar.gz
-tar -xzf yamcs-studio-1.0.0-SNAPSHOT-linux.gtk.x86_64.tar.gz
-sudo mv yamcs-studio-1.0.0-SNAPSHOT /opt/yamcs-studio
-sudo chown -R root:root /opt/yamcs-studio
-rm yamcs-studio-1.0.0-SNAPSHOT-linux.gtk.x86_64.tar.gz
+###wget http://www.windhoverlabs.com/releases/yamcs-studio/yamcs-studio-1.0.0-SNAPSHOT-linux.gtk.x86_64.tar.gz
+###tar -xzf yamcs-studio-1.0.0-SNAPSHOT-linux.gtk.x86_64.tar.gz
+###sudo mv yamcs-studio-1.0.0-SNAPSHOT /opt/yamcs-studio
+###sudo chown -R root:root /opt/yamcs-studio
+###rm yamcs-studio-1.0.0-SNAPSHOT-linux.gtk.x86_64.tar.gz
 
 # Install YAMCS CFS plugin
-wget http://www.windhoverlabs.com/releases/yamcs-cfs/yamcs-cfs-1.0.1.jar
-sudo mv yamcs-cfs-1.0.1.jar /opt/yamcs/lib
+###wget http://www.windhoverlabs.com/releases/yamcs-cfs/yamcs-cfs-1.0.1.jar
+sudo cp yamcs-cfs-1.0.3.jar /opt/yamcs/lib
 sudo chown -R root:root /opt/yamcs/lib
 
 # Install Sage
-wget http://www.windhoverlabs.com/releases/sage/sage-1.0.0+2.tar.gz
-tar -xzf sage-1.0.0+2.tar.gz
-cd sage
-npm install
-bower install
-cd $WORKSHOP_BASEDIR
-sudo mv sage /opt/sage
-sudo chown -R root:root /opt/sage
-rm -Rf sage-1.0.0+2.tar.gz
+###wget http://www.windhoverlabs.com/releases/sage/sage-1.0.0+2.tar.gz
+###tar -xzf sage-1.0.0+2.tar.gz
+###cd sage
+###npm install
+###bower install
+###cd $WORKSHOP_BASEDIR
+###sudo mv sage /opt/sage
+###sudo chown -R root:root /opt/sage
+###rm -Rf sage-1.0.0+2.tar.gz
 
 # Install Eclipse
 echo "WORKSHOP_BASEDIR = $WORKSHOP_BASEDIR"
-wget http://mirror.csclub.uwaterloo.ca/eclipse/technology/epp/downloads/release/oxygen/M2/eclipse-cpp-oxygen-M2-linux-gtk-x86_64.tar.gz
-tar -xzf eclipse-cpp-oxygen-M2-linux-gtk-x86_64.tar.gz
+wget https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/oxygen/M7/eclipse-cpp-oxygen-M7-linux-gtk-x86_64.tar.gz&mirror_id=1135
+tar -xzf eclipse-cpp-oxygen-M7-linux-gtk-x86_64.tar.gz
 sudo mkdir /opt/eclipse
 sudo mv eclipse /opt/eclipse/4.7
 sudo chown root:root /opt/eclipse
 echo "export PATH=/opt/eclipse/4.7:$PATH" >> ~/.bashrc
-rm eclipse-cpp-oxygen-M2-linux-gtk-x86_64.tar.gz
+rm eclipse-cpp-oxygen-M7-linux-gtk-x86_64.tar.gz
 
 # Setup and build the softsim build
 #${CFS_MISSION}/build/softsim/scripts/setup.sh
