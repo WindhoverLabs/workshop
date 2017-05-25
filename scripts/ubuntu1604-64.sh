@@ -62,8 +62,8 @@ sudo rm -Rf /opt/yamcs/mdb
 
 # Install YAMCS CFS plugin
 ###wget http://www.windhoverlabs.com/releases/yamcs-cfs/yamcs-cfs-1.0.1.jar
-###sudo mv yamcs-cfs-1.0.1.jar /opt/yamcs/lib
-###sudo chown -R root:root /opt/yamcs/lib
+sudo cp /opt/releases/yamcs-cfs/yamcs-cfs-1.0.3.jar /opt/yamcs/lib
+sudo chown -R root:root /opt/yamcs/lib
 
 # Install Sage
 ###wget http://www.windhoverlabs.com/releases/sage/sage-1.0.0+2.tar.gz
