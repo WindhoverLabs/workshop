@@ -78,13 +78,11 @@ sudo chown -R root:root /opt/yamcs/lib
 
 # Install Eclipse
 echo "WORKSHOP_BASEDIR = $WORKSHOP_BASEDIR"
-wget https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/oxygen/M7/eclipse-cpp-oxygen-M7-linux-gtk-x86_64.tar.gz&mirror_id=1135
 tar -xzf eclipse-cpp-oxygen-M7-linux-gtk-x86_64.tar.gz
 sudo mkdir /opt/eclipse
 sudo mv eclipse /opt/eclipse/4.7
 sudo chown root:root /opt/eclipse
 echo "export PATH=/opt/eclipse/4.7:$PATH" >> ~/.bashrc
-rm eclipse-cpp-oxygen-M7-linux-gtk-x86_64.tar.gz
 
 # Setup and build the softsim build
 #${CFS_MISSION}/build/softsim/scripts/setup.sh
