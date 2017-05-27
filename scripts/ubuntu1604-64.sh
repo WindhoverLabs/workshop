@@ -72,6 +72,8 @@ sudo mv eclipse /opt/eclipse/4.7
 sudo chown root:root /opt/eclipse
 echo "export PATH=/opt/eclipse/4.7:$PATH" >> ~/.bashrc
 
+sudo apt-get install -y cmake
+
 # Setup and build the softsim build
 #${CFS_MISSION}/build/softsim/scripts/setup.sh
 #${CFS_MISSION}/build/softsim/scripts/build.sh
