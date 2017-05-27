@@ -72,7 +72,11 @@ sudo mv eclipse /opt/eclipse/4.7
 sudo chown root:root /opt/eclipse
 echo "export PATH=/opt/eclipse/4.7:$PATH" >> ~/.bashrc
 
+# Install Airliner build dependencies
 sudo apt-get install -y cmake
+
+# Install XSDK dependencies
+sudo apt-get install -y xvfb libncurses5 chrpath socat autoconf libtool texinfo libsdl1.2-dev libglib2.0-dev zlib1g:i386
 
 # Setup and build the softsim build
 #${CFS_MISSION}/build/softsim/scripts/setup.sh
