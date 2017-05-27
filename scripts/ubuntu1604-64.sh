@@ -77,13 +77,17 @@ sudo apt-get install -y cmake
 
 # Install TFTP server
 sudo apt-get install -y xinetd tftpd tftp
+sudo cp /vagrant/etc/xinetd.d/tftp /etc/xinetd.d
+sudo mkdir /tftpboot
+sudo chmod -R 777 /tftpboot
+sudo chown -R nobody /tftpboot
+sudo service xinetd restart
 
 # Install XSDK dependencies
 sudo apt-get install -y libncurses-dev xvfb chrpath socat autoconf libtool texinfo libsdl1.2-dev libglib2.0-dev zlib1g:i386 tofrodos iproute gawk gcc git-core make net-tools libncurses5-dev zlib1g-dev flex bison lib32z1 lib32ncurses5 lib32stdc++6 libselinux1 libbz2-1.0:i386 lib32ncurses5 lib32z1
 # The following is a work around to get petalinux tools to work on ubuntu.
-sudo chsh -s /bin/bash
-sudo rm /bin/sh
-sudo ln -s /bin/bash /bin/sh
+echo "dash dash/sh boolean false" | sudo debconf-set-selections
+sudo DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash
 
 # Setup and build the softsim build
 #${CFS_MISSION}/build/softsim/scripts/setup.sh
