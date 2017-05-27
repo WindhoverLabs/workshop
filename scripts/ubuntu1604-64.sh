@@ -77,6 +77,10 @@ sudo apt-get install -y cmake
 
 # Install XSDK dependencies
 sudo apt-get install -y xvfb libncurses5 chrpath socat autoconf libtool texinfo libsdl1.2-dev libglib2.0-dev zlib1g:i386
+# The following is a work around to get petalinux tools to work on ubuntu.
+sudo chsh -s /bin/bash
+sudo rm /bin/sh
+sudo ln -s /bin/bash /bin/sh
 
 # Setup and build the softsim build
 #${CFS_MISSION}/build/softsim/scripts/setup.sh
