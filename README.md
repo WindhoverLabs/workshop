@@ -6,9 +6,8 @@ Perform these steps once for each PC/user that you deploy the workshop to.  This
 ```bash
 vagrant box add http://jenkins.windhoverlabs.lan/workshop/workshop.json
 ```
-1. Verify the box is added.  You should see the following output, though the version number will change as the box is updated.  
-
-    ```
+1. Verify the box is added.  You should see the following output, though the version number will change as the box is updated.
+```
 ==> box: Loading metadata for box 'http://jenkins.windhoverlabs.lan/workshop/workshop.json'
 ==> box: Adding box 'workshop' (v0.0.1) for provider: virtualbox
 The box you're attempting to add already exists. Remove it before
@@ -17,7 +16,7 @@ adding it again or add it with the `--force` flag.
 Name: workshop
 Provider: virtualbox
 Version: 0.0.1
-    ```
+```
 
 # Instance Deployment
 
