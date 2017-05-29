@@ -1,21 +1,19 @@
 # Initial Deployment
 
-Perform these steps once for each PC/user that you deploy the workshop to.  This doesn't actually install Workshop or even copy any files down from the server.  It will add the box and source URL to the Vagrant cache.
+Perform these steps once for each PC/user that you deploy the workshop to.  This will download the box file from the server and add it to the Vagrant cache.
 
 1. Add the box to the Vagrant cache  
 ```bash
 vagrant box add http://jenkins.windhoverlabs.lan/workshop/workshop.json
 ```
-2. Verify the box is added.  You should see the following output, though the version number will change as the box is updated.  
+2. Verify the box is added.  You should output similar to the following output, though the version number will change as the box is updated.  
 ```
 ==> box: Loading metadata for box 'http://jenkins.windhoverlabs.lan/workshop/workshop.json'
 ==> box: Adding box 'workshop' (v0.0.1) for provider: virtualbox
-The box you're attempting to add already exists. Remove it before
-adding it again or add it with the `--force` flag.
-
-Name: workshop
-Provider: virtualbox
-Version: 0.0.1
+    box: Downloading: http://jenkins.windhoverlabs.lan/workshop/workshop_0.0.1.box
+    box: Progress: 100% (Rate: 83.5M/s, Estimated time remaining: --:--:--)
+    box: Calculating and comparing box checksum...
+==> box: Successfully added box 'workshop' (v0.0.1) for 'virtualbox'!
 ```
 
 # Instance Deployment
