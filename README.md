@@ -2,10 +2,10 @@
 
 Perform these steps once for each PC/user that you deploy the workshop to.  This doesn't actually install Workshop or even copy any files down from the server.  It will add the box and source URL to the Vagrant cache.
 
-1. Add the box to the Vagrant cache  
-    ```bash
+1. Add the box to the Vagrant cache
+```bash
 vagrant box add http://jenkins.windhoverlabs.lan/workshop/workshop.json
-    ```
+```
 1. Verify the box is added.  You should see the following output, though the version number will change as the box is updated.  
 
     ```
