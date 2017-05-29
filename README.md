@@ -3,10 +3,10 @@
 Perform these steps once for each PC/user that you deploy the workshop to.  This doesn't actually install Workshop or even copy any files down from the server.  It will add the box and source URL to the Vagrant cache.
 
 1. Add the box to the Vagrant cache  
-    ```bash
+```bash
 vagrant box add http://jenkins.windhoverlabs.lan/workshop/workshop.json
 ```
-1. Verify the box is added.  You should see the following output, though the version number will change as the box is updated.  
+2. Verify the box is added.  You should see the following output, though the version number will change as the box is updated.  
 ```
 ==> box: Loading metadata for box 'http://jenkins.windhoverlabs.lan/workshop/workshop.json'
 ==> box: Adding box 'workshop' (v0.0.1) for provider: virtualbox
@@ -23,23 +23,19 @@ Version: 0.0.1
 Perform these steps everytime you want to deploy a new instance of Workshop.  This will create a new virtual machine from the cached source.
 
 1. Create a directory to deploy Workshop, i.e.:  
-
-    ```bash
+```bash
 mkdir workshop
-    ```
-1. Make the new directory the working directory:  
-
-    ```bash
+```
+2. Make the new directory the working directory:  
+```bash
 cd workshop
-    ```
-1. Instantiate the Workshop instance.  This will create a "Vagrantfile" in your new directory.  
-
-    ```bash
+```
+3. Instantiate the Workshop instance.  This will create a "Vagrantfile" in your new directory.  
+```bash
 vagrant init workshop
-    ```
-1. Tailor the instance for your PC and uses.  Edit the "Vagrantfile" file to apply new tailoring.  For example, it is common to enable the GUI and increase the allocated memory and CPUs:  
-
-    ```
+```
+4. Tailor the instance for your PC and uses.  Edit the "Vagrantfile" file to apply new tailoring.  For example, it is common to enable the GUI and increase the allocated memory and CPUs:  
+```
     config.vm.provider "virtualbox" do |vb|
       # Display the VirtualBox GUI when booting the machine
       vb.gui = true
@@ -50,15 +46,13 @@ vagrant init workshop
       # Customize the number of CPUs on the VM:
       vb.cpus = "2"
     end
-    ```
-1. Save the file and run the following command to create the instance and launch the new Workshop instance for the first time:  
-
-    ```
+```
+5. Save the file and run the following command to create the instance and launch the new Workshop instance for the first time:  
+```
 vagrant up
-    ```
-1. This can take a few minutes to complete initially.  You should see output similar to the following (though some details will change, i.e. VM name, paths, and forwarding ports):  
-
-    ```
+```
+6. This can take a few minutes to complete initially.  You should see output similar to the following (though some details will change, i.e. VM name, paths, and forwarding ports):  
+```
     Bringing machine 'default' up with 'virtualbox' provider...
 ==> default: Importing base box 'workshop'...
 ==> default: Matching MAC address for NAT networking...
@@ -86,19 +80,17 @@ vagrant up
 ==> default: Checking for guest additions in VM...
 ==> default: Mounting shared folders...
     default: /vagrant => C:/Users/mathe_g0df2an/Documents/windhover/repos/workshop
-    ```
-1.  If you enabled the GUI, VirtualBox should open with a view of the Workshop desktop.
+```
+7.  If you enabled the GUI, VirtualBox should open with a view of the Workshop desktop.
 
 # How to start Workshop
 
 1. To start Workshop, open a terminal, navigate to the directory where you created the Workshop instance, and run the following command:  
-
-    ```
+```
 vagrant up
-    ```
-1. It shouldn't take more than 30 seconds to start and you should see output similar to the following:  
-
-    ```
+```
+2. It shouldn't take more than 30 seconds to start and you should see output similar to the following:  
+```
 Bringing machine 'default' up with 'virtualbox' provider...
 ==> default: Checking if box 'workshop' is up to date...
 ==> default: Clearing any previously set forwarded ports...
@@ -123,19 +115,18 @@ Bringing machine 'default' up with 'virtualbox' provider...
     Take special note of the line that t reads "Checking if box 'workshop' is up to date".  If there is a new version on the server, you will see a message indicating such.  Upgrade to the new version is not automatic.  See section "How to Upgrade Workshop" for instructions on how to upgrade your instance.
 
 # How to shutdown Workshop
+
 Though Workshop could be left running indefinitely, you should shutdown workshop when not in use to ensure that no data will be lost if power is lost or the host is unexpected shutdown.
 
 1. To shutdown Workshop, save all files you have open in the Workshop virtual machine.
-1. Next open a terminal on the host PC not the Workshop virtual machine, navigate to the directory where you created the Workshop instance, and run the following command:  
-
-    ```
+2. Next open a terminal on the host PC not the Workshop virtual machine, navigate to the directory where you created the Workshop instance, and run the following command:  
+```
 vagrant halt
-    ```
-1. You should see the following output in the host terminal:  
-
-    ```
+```
+3. You should see the following output in the host terminal:  
+```
 ==> default: Attempting graceful shutdown of VM...
-    ```
+```
     
 # How to upgrade Workshop
 
@@ -144,8 +135,7 @@ The "vagrant up" command will always try to query the source server for the late
 Upgrading Workshop will delete the Workshop instance and any data contained within Workshop.  Therefore, all files that you want to save should be saved off before performing the following steps.  Any changes in CM repositories should be pushed to the server.  For convenience, the "/vagrant" directory is mapped back to the host.  It is common to copy files you want to retain to the /vagrant directory.  Often, users will just do all work in the /vagrant directory to ensure files are always retained.  However, when running Workshop on a Windows host, this is sometimes problematic due to differences in the Windows file system.  Therefore, it is recommended that Windows users should use the home directory in Workshop, and only copy tarballs (.tar.gz) to the /vagrant directory.  This is because while permissions and file attributes of the tarball itself are lost when copied to the Windows file system, the contents of the tarball can still be safely untar'd back onto the new Workshop instance linux file system with all the correct permissions and file attributes retained.
  
 1. Shutdown the Workshop instance.  
-1. Run the following command:  
-
-    ```
+2. Run the following command:  
+```
 vagrant box update
-    ```
+```
