@@ -111,7 +111,7 @@ Bringing machine 'default' up with 'virtualbox' provider...
     default: /vagrant => C:/Users/mathe_g0df2an/Documents/windhover/repos/workshop
 ==> default: Machine already provisioned. Run `vagrant provision` or use the `--provision`
 ==> default: flag to force provisioning. Provisioners marked to run always will still run.
-    ```
+```
     Take special note of the line that t reads "Checking if box 'workshop' is up to date".  If there is a new version on the server, you will see a message indicating such.  Upgrade to the new version is not automatic.  See section "How to Upgrade Workshop" for instructions on how to upgrade your instance.
 
 # How to shutdown Workshop
