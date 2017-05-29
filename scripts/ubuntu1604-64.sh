@@ -72,8 +72,17 @@ sudo mv eclipse /opt/eclipse/4.7
 sudo chown root:root /opt/eclipse
 echo "export PATH=/opt/eclipse/4.7:$PATH" >> ~/.bashrc
 
+# Install additional development tools
+sudo apt-get install -y libc6-dbg:i386 valgrind gcovr gcov xsltproc 
+
 # Install some nice to have stuff
-sudo apt-get install -y gedit
+sudo apt-get install -y gedit htop gkrellm 
+
+# Configure git 
+sudo apt-get install -y meld
+git config --global push.default simple
+sudo git config --global merge.tool meld
+sudo git config --global  diff.guitool meld
 
 # Install Airliner build dependencies
 sudo apt-get install -y cmake
