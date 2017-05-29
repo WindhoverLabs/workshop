@@ -72,6 +72,9 @@ sudo mv eclipse /opt/eclipse/4.7
 sudo chown root:root /opt/eclipse
 echo "export PATH=/opt/eclipse/4.7:$PATH" >> ~/.bashrc
 
+# Install some nice to have stuff
+sudo apt-get install -y gedit
+
 # Install Airliner build dependencies
 sudo apt-get install -y cmake
 
