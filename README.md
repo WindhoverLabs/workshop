@@ -7,6 +7,7 @@ Perform these steps once for each PC/user that you deploy the workshop to.  This
 vagrant box add http://jenkins.windhoverlabs.lan/workshop/workshop.json
     ```
 1. Verify the box is added.  You should see the following output, though the version number will change as the box is updated.  
+
     ```
 ==> box: Loading metadata for box 'http://jenkins.windhoverlabs.lan/workshop/workshop.json'
 ==> box: Adding box 'workshop' (v0.0.1) for provider: virtualbox
@@ -23,18 +24,22 @@ Version: 0.0.1
 Perform these steps everytime you want to deploy a new instance of Workshop.  This will create a new virtual machine from the cached source.
 
 1. Create a directory to deploy Workshop, i.e.:  
+
     ```bash
 mkdir workshop
     ```
-1. Make the new directory the working directory:
+1. Make the new directory the working directory:  
+
     ```bash
 cd workshop
     ```
-1. Instantiate the Workshop instance.  This will create a "Vagrantfile" in your new directory.
+1. Instantiate the Workshop instance.  This will create a "Vagrantfile" in your new directory.  
+
     ```bash
 vagrant init workshop
     ```
-1. Tailor the instance for your PC and uses.  Edit the "Vagrantfile" file to apply new tailoring.  For example, it is common to enable the GUI and increase the allocated memory and CPUs:
+1. Tailor the instance for your PC and uses.  Edit the "Vagrantfile" file to apply new tailoring.  For example, it is common to enable the GUI and increase the allocated memory and CPUs:  
+
     ```
     config.vm.provider "virtualbox" do |vb|
       # Display the VirtualBox GUI when booting the machine
@@ -47,11 +52,13 @@ vagrant init workshop
       vb.cpus = "2"
     end
     ```
-1. Save the file and run the following command to create the instance and launch the new Workshop instance for the first time:
+1. Save the file and run the following command to create the instance and launch the new Workshop instance for the first time:  
+
     ```
 vagrant up
     ```
-1. This can take a few minutes to complete initially.  You should see output similar to the following (though some details will change, i.e. VM name, paths, and forwarding ports):
+1. This can take a few minutes to complete initially.  You should see output similar to the following (though some details will change, i.e. VM name, paths, and forwarding ports):  
+
     ```
     Bringing machine 'default' up with 'virtualbox' provider...
 ==> default: Importing base box 'workshop'...
@@ -85,11 +92,13 @@ vagrant up
 
 # How to start Workshop
 
-1. To start Workshop, open a terminal, navigate to the directory where you created the Workshop instance, and run the following command:
+1. To start Workshop, open a terminal, navigate to the directory where you created the Workshop instance, and run the following command:  
+
     ```
 vagrant up
     ```
-1. It shouldn't take more than 30 seconds to start and you should see output similar to the following:
+1. It shouldn't take more than 30 seconds to start and you should see output similar to the following:  
+
     ```
 Bringing machine 'default' up with 'virtualbox' provider...
 ==> default: Checking if box 'workshop' is up to date...
@@ -118,11 +127,13 @@ Bringing machine 'default' up with 'virtualbox' provider...
 Though Workshop could be left running indefinitely, you should shutdown workshop when not in use to ensure that no data will be lost if power is lost or the host is unexpected shutdown.
 
 1. To shutdown Workshop, save all files you have open in the Workshop virtual machine.
-1. Next open a terminal on the host PC not the Workshop virtual machine, navigate to the directory where you created the Workshop instance, and run the following command:
+1. Next open a terminal on the host PC not the Workshop virtual machine, navigate to the directory where you created the Workshop instance, and run the following command:  
+
     ```
 vagrant halt
     ```
-1. You should see the following output in the host terminal:
+1. You should see the following output in the host terminal:  
+
     ```
 ==> default: Attempting graceful shutdown of VM...
     ```
@@ -135,6 +146,7 @@ Upgrading Workshop will delete the Workshop instance and any data contained with
  
 1. Shutdown the Workshop instance.  
 1. Run the following command:  
+
     ```
 vagrant box update
     ```
