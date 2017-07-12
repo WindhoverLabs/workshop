@@ -7,7 +7,7 @@ WORKSHOP_BASEDIR=$PWD
 # Install the prereqs
 export DEBIAN_FRONTEND=noninteractive
 sudo apt-get -y update
-sudo apt-get -y install g++ g++-multilib git gitk openjdk-8-jdk cinnamon maven libc-bin libc-dev-bin libc6-dev rpm nodejs-legacy npm alien
+sudo apt-get -y install g++ g++-multilib git gitk openjdk-8-jdk cinnamon maven libc-bin libc-dev-bin libc6-dev rpm nodejs-legacy npm alien doxygen
 sudo npm -g install bower gulp
 
 # Setup locales.  The most current Ubuntu 16.04 version has a bug causing the terminal
@@ -35,7 +35,7 @@ sudo apt-get -y autoremove
 
 # Install YAMCS
 sudo useradd -r yamcs
-sudo alien --scripts -i yamcs-3.2.2+rd8e5dcf-10.noarch.rpm
+sudo alien --scripts -i yamcs-3.2.2+r54d5450-10.noarch.rpm
 sudo chown -R root:root /opt/yamcs
 sudo rm -Rf /opt/yamcs/cache
 sudo rm -Rf /opt/yamcs/etc/*
