@@ -55,14 +55,11 @@ sudo cp yamcs-cfs-1.0.3.jar /opt/yamcs/lib
 sudo chown -R root:root /opt/yamcs/lib
 
 # Install Sage
-###tar -xzf sage-1.0.0+2.tar.gz
-###cd sage
-###npm install
-###bower install
-###cd $WORKSHOP_BASEDIR
-###sudo mv sage /opt/sage
-###sudo chown -R root:root /opt/sage
-###rm -Rf sage-1.0.0+2.tar.gz
+sudo cp -R /vagrant/sage /opt/yamcs
+cd /opt/yamcs/sage
+sudo npm install
+sudo bower install
+sudo ln -s /opt/yamcs/sage/sage /opt/yamcs/sage/node_modules/sage
 
 # Install Eclipse
 echo "WORKSHOP_BASEDIR = $WORKSHOP_BASEDIR"
