@@ -35,7 +35,7 @@ sudo apt-get -y autoremove
 
 # Install YAMCS
 sudo useradd -r yamcs
-sudo alien --scripts -i yamcs-3.2.2+r54d5450-10.noarch.rpm
+sudo alien --scripts -i yamcs-3.2.2+r6405b1e-10.noarch.rpm
 sudo chown -R root:root /opt/yamcs
 sudo rm -Rf /opt/yamcs/cache
 sudo rm -Rf /opt/yamcs/etc/*
