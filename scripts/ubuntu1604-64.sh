@@ -60,6 +60,7 @@ cd /opt/yamcs/sage
 sudo npm install
 sudo bower install
 sudo ln -s /opt/yamcs/sage/sage /opt/yamcs/sage/node_modules/sage
+cd ${WORKSHOP_BASEDIR}
 
 # Install Eclipse
 echo "WORKSHOP_BASEDIR = $WORKSHOP_BASEDIR"
