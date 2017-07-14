@@ -7,7 +7,7 @@ WORKSHOP_BASEDIR=$PWD
 # Install the prereqs
 export DEBIAN_FRONTEND=noninteractive
 sudo apt-get -y update
-sudo apt-get -y install g++ g++-multilib git gitk openjdk-8-jdk cinnamon maven libc-bin libc-dev-bin libc6-dev rpm nodejs-legacy npm alien doxygen
+sudo apt-get -y install g++ g++-multilib git gitk openjdk-8-jdk cinnamon maven libc-bin libc-dev-bin libc6-dev rpm nodejs-legacy npm alien doxygen vagrant
 sudo npm -g install bower gulp
 
 # Setup locales.  The most current Ubuntu 16.04 version has a bug causing the terminal
