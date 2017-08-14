@@ -58,6 +58,16 @@ Vagrant.configure(2) do |config|
   #
   #  vb.cpus = 4
   end
+
+  config.vm.provider "vmware_workstation" do |vmware|
+    # Display the VMWare GUI when booting the machine
+    vmware.gui = false
+  #
+  #  # Customize the amount of memory on the VM:
+  #  vmware.memory = "4096"
+  #
+  #  vmware.cpus = 4
+  end
   #
   # View the documentation for the provider you are using for more
   # information on available options.
