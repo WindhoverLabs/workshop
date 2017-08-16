@@ -56,10 +56,14 @@ sudo chown -R root:root /opt/yamcs/lib
 
 # Install Sage
 sudo cp -R /vagrant/sage /opt/yamcs
-cd /opt/yamcs/sage
-sudo npm install
-sudo bower install
-sudo ln -s /opt/yamcs/sage/sage /opt/yamcs/sage/node_modules/sage
+cd /opt/yamcs
+sudo chown -R vagrant:vagrant sage
+cd sage
+npm install
+bower install
+ln -s /opt/yamcs/sage/sage /opt/yamcs/sage/node_modules/sage
+cd ..
+sudo chown -R root:root sage
 cd ${WORKSHOP_BASEDIR}
 
 # Install Eclipse
