@@ -71,7 +71,7 @@ sudo chown root:root /opt/eclipse
 echo "export PATH=/opt/eclipse/4.7:$PATH" >> ~/.bashrc
 
 # Install additional development tools
-sudo apt-get install -y libc6-dbg:i386 valgrind gcovr gcov xsltproc 
+sudo apt-get install -y libc6-dbg:i386 valgrind gcovr lcov xsltproc graphviz  
 
 # Install some nice to have stuff
 sudo apt-get install -y gedit htop gkrellm 
