@@ -1,0 +1,27 @@
+#!/bin/bash
+export VBOX_VERSION_ID="0.0.8"
+vagrant destroy -f
+git clean -dxf
+cp /opt/releases/yamcs/yamcs-3.2.2+re915395-10.noarch.rpm ${WORKSPACE}
+cp /opt/releases/yamcs-cfs/yamcs-cfs-1.0.3.jar ${WORKSPACE}
+cp /opt/packages/eclipse/eclipse-cpp-oxygen-M7-linux-gtk-x86_64.tar.gz ${WORKSPACE}
+rm -Rf sage
+git clone git@bitbucket.org:windhoverlabs/sage.git
+
+vagrant up
+vagrant halt
+vagrant package --output workshop_vb_${VBOX_VERSION_ID}.box --vagrantfile Vagrantfile_user
+openssl sha1 workshop_vb_${VBOX_VERSION_ID}.box
+filehash=`openssl dgst -sha1 workshop_vb_${VBOX_VERSION_ID}.box | sed 's/^.*= //'`
+cp workshop_vb_${VBOX_VERSION_ID}.box /var/www/html/workshop/
+vagrant destroy -f
+
+#vagrant up --provider vmware_workstation
+#vagrant halt
+#vagrant package --output workshop_vmware_${VBOX_VERSION_ID}.box --vagrantfile Vagrantfile_user
+#openssl sha1 workshop_vmware_${VBOX_VERSION_ID}.box
+#filehash=`openssl dgst -sha1 workshop_vmware_${VBOX_VERSION_ID}.box | sed 's/^.*= //'`
+#cp workshop_vmware_${VBOX_VERSION_ID}.box /var/www/html/workshop/
+#vagrant destroy -f
+
+python append-to-json.py --url-vb "http://jenkins.windhoverlabs.lan/workshop/workshop_vb_${VBOX_VERSION_ID}.box" --checksum-vb "$filehash" --version "${VBOX_VERSION_ID}" --json-file "/var/www/html/workshop/workshop.json"
