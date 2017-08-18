@@ -136,4 +136,6 @@ Upgrading Workshop will delete the Workshop instance and any data contained with
 2. Run the following command:  
 ```
 vagrant box update
+vagrant destroy
+vagrant up
 ```
