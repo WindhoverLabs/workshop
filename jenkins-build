@@ -2,7 +2,7 @@
 export VBOX_VERSION_ID="0.0.9"
 vagrant destroy -f
 git clean -dxf
-cp /opt/releases/yamcs/yamcs-3.2.2+re915395-10.noarch.rpm ${WORKSPACE}
+cp /opt/releases/yamcs/yamcs-3.2.2+r6405b1e-10.noarch.rpm ${WORKSPACE}
 cp /opt/releases/yamcs-cfs/yamcs-cfs-1.0.3.jar ${WORKSPACE}
 cp /opt/packages/eclipse/eclipse-cpp-oxygen-M7-linux-gtk-x86_64.tar.gz ${WORKSPACE}
 rm -Rf sage
