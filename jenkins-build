@@ -1,5 +1,5 @@
 #!/bin/bash
-export VBOX_VERSION_ID="0.0.8"
+export VBOX_VERSION_ID="0.0.9"
 vagrant destroy -f
 git clean -dxf
 cp /opt/releases/yamcs/yamcs-3.2.2+re915395-10.noarch.rpm ${WORKSPACE}
