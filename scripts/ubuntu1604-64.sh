@@ -1,5 +1,9 @@
 #!/bin/bash
 
+export YAMCS_VERSION=3.2.2+r6405b1e-10
+export YAMCS_CFS_VERSION=1.0.3
+export ECLIPSE_VERSION=oxygen-M7-linux-gtk-x86_64
+
 cd "$(dirname "$0")"
 cd ..
 WORKSHOP_BASEDIR=$PWD
@@ -34,14 +38,17 @@ sudo apt-get purge -y ubuntu-desktop unity-*
 sudo apt-get -y autoremove
 
 # Install YAMCS
+cd ${WORKSPACE}
+wget http://jenkins.windhoverlabs.lan/releases/yamcs/yamcs-${YAMCS_VERSION}.noarch.rpm
 sudo useradd -r yamcs
-sudo alien --scripts -i yamcs-3.2.2+r6405b1e-10.noarch.rpm
+sudo alien --scripts -i yamcs-${YAMCS_VERSION}.noarch.rpm
 sudo chown -R root:root /opt/yamcs
 sudo rm -Rf /opt/yamcs/cache
 sudo rm -Rf /opt/yamcs/etc/*
 sudo cp yamcs/* /opt/yamcs/etc/
 sudo rm -Rf /opt/yamcs/log
 sudo rm -Rf /opt/yamcs/mdb
+rm yamcs-${YAMCS_VERSION}.noarch.rpm
 
 # Install YAMCS Studio
 ###wget http://www.windhoverlabs.com/releases/yamcs-studio/yamcs-studio-1.0.0-SNAPSHOT-linux.gtk.x86_64.tar.gz
@@ -51,8 +58,11 @@ sudo rm -Rf /opt/yamcs/mdb
 ###rm yamcs-studio-1.0.0-SNAPSHOT-linux.gtk.x86_64.tar.gz
 
 # Install YAMCS CFS plugin
-sudo cp yamcs-cfs-1.0.3.jar /opt/yamcs/lib
+cd ${WORKSPACE}
+wget http://jenkins.windhoverlabs.lan/releases/yamcs-cfs-${YAMCS_CFS_VERSION}.jar
+sudo cp yamcs-cfs-${YAMCS_CFS_VERSION}.jar /opt/yamcs/lib
 sudo chown -R root:root /opt/yamcs/lib
+rm yamcs-cfs-${YAMCS_CFS_VERSION}.jar
 
 # Install Sage
 sudo cp -R /vagrant/sage /opt/yamcs/
@@ -67,12 +77,13 @@ sudo chown -R root:root sage
 cd ${WORKSHOP_BASEDIR}
 
 # Install Eclipse
+wget http://jenkins.windhoverlabs.lan/external-packages/eclipse/eclipse-cpp-${ECLIPSE_VERSION}.tar.gz
 echo "WORKSHOP_BASEDIR = $WORKSHOP_BASEDIR"
-tar -xzf eclipse-cpp-oxygen-M7-linux-gtk-x86_64.tar.gz
-sudo mkdir /opt/eclipse
-sudo mv eclipse /opt/eclipse/4.7
+tar -xzf eclipse-cpp-${ECLIPSE_VERSION}.tar.gz
+sudo mv eclipse /opt/
 sudo chown root:root /opt/eclipse
-echo "export PATH=/opt/eclipse/4.7:$PATH" >> ~/.bashrc
+echo "export PATH=/opt/eclipse/:$PATH" >> ~/.bashrc
+rm eclipse-cpp-${ECLIPSE_VERSION}.tar.gz
 
 # Install additional development tools
 sudo apt-get install -y libc6-dbg:i386 valgrind gcovr lcov xsltproc graphviz  
