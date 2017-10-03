@@ -137,5 +137,6 @@ export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
 sudo debconf-set-selections /vagrant/scripts/dump1090-mutability-preseed.txt
 sudo dpkg -i dump1090-mutability_1.15~dev_*.deb
 
-
+# Install missing airliner build dependencies
+sudo apt-get install -y linux-libc-dev:i386
 
