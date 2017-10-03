@@ -1,0 +1,79 @@
+
+# Ports for AVR-format output connections (0 disables):
+dump1090-mutability	dump1090-mutability/net-ro-port	string	30002
+
+# Interval between logging stats, in seconds:
+dump1090-mutability	dump1090-mutability/stats-interval	string	3600
+
+# RTL-SDR frequency correction, in PPM:
+dump1090-mutability	dump1090-mutability/rtlsdr-ppm	string	0
+
+# Choices: approximate, exact, none
+dump1090-mutability	dump1090-mutability/json-location-accuracy	select	approximate
+
+# Minimum output message size:
+dump1090-mutability	dump1090-mutability/net-out-size	string	500
+
+# User to run dump1090 as:
+dump1090-mutability	dump1090-mutability/run-as-user	string	dump1090
+
+# Portsfor AVR-format input connections (0 disables):
+dump1090-mutability	dump1090-mutability/net-ri-port	string	30001
+
+# Enable the lighttpd integration?
+dump1090-mutability	dump1090-mutability/use-lighttpd	boolean	true
+
+# RTL-SDR gain, in dB:
+dump1090-mutability	dump1090-mutability/rtlsdr-gain	string	max
+
+# Log all decoded messages?
+dump1090-mutability	dump1090-mutability/log-decoded-messages	boolean	false
+
+# Longitude of receiver, in decimal degrees:
+dump1090-mutability	dump1090-mutability/decode-lon	string	20.00
+
+# SO_SNDBUF size:
+# Choices: 65536, 131072, 262144
+dump1090-mutability	dump1090-mutability/net-buffer	select	262144
+
+# Seconds between heartbeat messages (0 disables):
+dump1090-mutability	dump1090-mutability/net-heartbeat	string	60
+
+# Interval between writing JSON aircraft state, in seconds:
+dump1090-mutability	dump1090-mutability/json-interval	string	1
+
+# Latitude of receiver, in decimal degrees:
+dump1090-mutability	dump1090-mutability/decode-lat	string	10.00
+	
+# Absolute maximum range of receiver, in nautical miles:
+dump1090-mutability	dump1090-mutability/decode-max-range	string	300
+
+# Ports for Beast-format output connections (0 disables):
+dump1090-mutability	dump1090-mutability/net-bo-port	string	30005
+	
+# RTL-SDR dongle to use:
+dump1090-mutability	dump1090-mutability/rtlsdr-device	string	
+
+# Ports for Beast-format input connections (0 disables):
+dump1090-mutability	dump1090-mutability/net-bi-port	string	30004,30104
+
+# Directory to write JSON aircraft state to:
+dump1090-mutability	dump1090-mutability/json-dir	string	/run/dump1090-mutability
+
+# Maximum output buffering time:
+dump1090-mutability	dump1090-mutability/net-out-interval	string	1
+
+# Path to log to:
+dump1090-mutability	dump1090-mutability/log-file	string	/var/log/dump1090-mutability.log
+
+# Start dump1090 automatically?
+dump1090-mutability	dump1090-mutability/auto-start	boolean	true
+
+# Interface address to bind to (blank for all interfaces):
+dump1090-mutability	dump1090-mutability/net-bind-address	string	127.0.0.1
+
+# Fix detected CRC errors?
+dump1090-mutability	dump1090-mutability/decode-fixcrc	boolean	true
+
+# Ports for SBS-format output connections (0 disables):
+dump1090-mutability	dump1090-mutability/net-sbs-port	string	30003

@@ -107,3 +107,35 @@ sudo DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash
 #${CFS_MISSION}/build/softsim/scripts/setup.sh
 #${CFS_MISSION}/build/softsim/scripts/build.sh
 
+# Install dependencies for PX4 and Gazebo
+sudo apt-get install -y python-jinja2
+sudo apt-get install -y python-empy
+sudo apt-get install -y python-pip python-dev build-essential 
+sudo pip install --upgrade pip 
+sudo pip install --upgrade virtualenv 
+sudo pip install catkin_pkg
+sudo apt-get install -y gazebo7 libgazebo7 libgazebo7-dev
+sudo apt-get install -y protobuf-compiler python-protobuf
+sudo apt-get install -y ant openjdk-8-jdk openjdk-8-jre 
+sudo apt-get remove -y modemmanager
+sudo apt-get install -y python-argparse git git-core wget zip python-empy qtcreator cmake build-essential genromfs
+sudo apt-get install -y python-dev
+sudo apt-get install -y libeigen3-dev libopencv-dev
+sudo apt-get install -y python-serial openocd flex bison libncurses5-dev autoconf texinfo     libftdi-dev libtool zlib1g-dev
+sudo apt-get install -y gcc-5-arm-linux-gnueabihf
+sudo apt-get install -y g++-5-arm-linux-gnueabihf
+sudo ln -s /usr/bin/arm-linux-gnueabihf-gcc-5 /usr/bin/arm-linux-gnueabihf-gcc
+sudo ln -s /usr/bin/arm-linux-gnueabihf-g++-5 /usr/bin/arm-linux-gnueabihf-g++
+
+# Install dependencies for running the ADS-B receiver in Commander
+sudo apt-get install -y rtl-sdr librtlsdr-dev
+git clone https://github.com/mutability/dump1090.git
+cd dump1090
+sudo dpkg-buildpackage -b
+cd ..
+export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
+sudo debconf-set-selections /vagrant/scripts/dump1090-mutability-preseed.txt
+sudo dpkg -i dump1090-mutability_1.15~dev_*.deb
+
+
+
