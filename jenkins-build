@@ -10,7 +10,7 @@ vagrant halt
 vagrant package --output workshop_vb_${VBOX_VERSION_ID}.box --vagrantfile Vagrantfile_user
 openssl sha1 workshop_vb_${VBOX_VERSION_ID}.box
 filehash=`openssl dgst -sha1 workshop_vb_${VBOX_VERSION_ID}.box | sed 's/^.*= //'`
-cp workshop_vb_${VBOX_VERSION_ID}.box /var/www/html/workshop/
+cp workshop_vb_${VBOX_VERSION_ID}.box /var/www/html/releases/workshop/
 vagrant destroy -f
 
 #vagrant up --provider vmware_workstation
@@ -21,4 +21,4 @@ vagrant destroy -f
 #cp workshop_vmware_${VBOX_VERSION_ID}.box /var/www/html/workshop/
 #vagrant destroy -f
 
-python append-to-json.py --url-vb "http://jenkins.windhoverlabs.lan/workshop/workshop_vb_${VBOX_VERSION_ID}.box" --checksum-vb "$filehash" --version "${VBOX_VERSION_ID}" --json-file "/var/www/html/workshop/workshop.json"
+python append-to-json.py --url-vb "http://jenkins.windhoverlabs.lan/releases/workshop/workshop_vb_${VBOX_VERSION_ID}.box" --checksum-vb "$filehash" --version "${VBOX_VERSION_ID}" --json-file "/var/www/html/releases/workshop/workshop.json"
