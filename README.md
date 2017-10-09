@@ -4,7 +4,7 @@ Perform these steps once for each PC/user that you deploy the workshop to.  This
 
 1. Add the box to the Vagrant cache  
 ```bash
-vagrant box add http://jenkins.windhoverlabs.lan/workshop/workshop.json
+vagrant box add http://jenkins.windhoverlabs.lan/releases/workshop/workshop.json
 ```
 2. Verify the box is added.  You should output similar to the following output, though the version number will change as the box is updated.  
 ```
