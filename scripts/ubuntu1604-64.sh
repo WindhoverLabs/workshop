@@ -59,7 +59,7 @@ rm yamcs-${YAMCS_VERSION}.noarch.rpm
 
 # Install YAMCS CFS plugin
 cd ${WORKSPACE}
-wget http://jenkins.windhoverlabs.lan/releases/yamcs-cfs-${YAMCS_CFS_VERSION}.jar
+wget http://jenkins.windhoverlabs.lan/releases/yamcs-cfs/yamcs-cfs-${YAMCS_CFS_VERSION}.jar
 sudo cp yamcs-cfs-${YAMCS_CFS_VERSION}.jar /opt/yamcs/lib
 sudo chown -R root:root /opt/yamcs/lib
 rm yamcs-cfs-${YAMCS_CFS_VERSION}.jar
