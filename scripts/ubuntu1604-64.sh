@@ -67,7 +67,7 @@ rm yamcs-cfs-${YAMCS_CFS_VERSION}.jar
 # Install Sage
 git clone git@bitbucket.org:windhoverlabs/sage.git
 sudo cp -R sage /opt/yamcs/
-sudo rm sage
+sudo rm -Rf sage
 cd /opt/yamcs
 sudo chown -R vagrant:vagrant sage
 cd sage
