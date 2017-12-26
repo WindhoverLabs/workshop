@@ -95,10 +95,10 @@ sudo apt-get install -y gedit htop gkrellm
 
 # Configure git 
 sudo apt-get install -y meld
-git config --global push.default simple
+sudo git config --global push.default simple
 sudo git config --global merge.tool meld
 sudo git config --global  diff.guitool meld
-
+f
 # Install Airliner build dependencies
 sudo apt-get install -y cmake
 
@@ -116,29 +116,31 @@ sudo apt-get install -y libncurses-dev xvfb chrpath socat autoconf libtool texin
 echo "dash dash/sh boolean false" | sudo debconf-set-selections
 sudo DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash
 
-# Setup and build the softsim build
-#${CFS_MISSION}/build/softsim/scripts/setup.sh
-#${CFS_MISSION}/build/softsim/scripts/build.sh
-
 # Install dependencies for PX4 and Gazebo
+sudo apt-get install -y libimage-exiftool-perl
+sudo apt-get install -y catkin
 sudo apt-get install -y python-jinja2
 sudo apt-get install -y python-empy
 sudo apt-get install -y python-pip python-dev build-essential 
-sudo pip install --upgrade pip 
-sudo pip install --upgrade virtualenv 
-sudo pip install catkin_pkg
-sudo apt-get install -y gazebo7 libgazebo7 libgazebo7-dev
+sudo -H pip install --upgrade pip 
+sudo -H pip install --upgrade virtualenv 
+sudo -H pip install catkin_pkg
+sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
+wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install -y gazebo8 libgazebo8 libgazebo8-dev
 sudo apt-get install -y protobuf-compiler python-protobuf
 sudo apt-get install -y ant openjdk-8-jdk openjdk-8-jre 
 sudo apt-get remove -y modemmanager
 sudo apt-get install -y python-argparse git git-core wget zip python-empy qtcreator cmake build-essential genromfs
 sudo apt-get install -y python-dev
 sudo apt-get install -y libeigen3-dev libopencv-dev
-sudo apt-get install -y python-serial openocd flex bison libncurses5-dev autoconf texinfo     libftdi-dev libtool zlib1g-dev
+sudo apt-get install -y python-serial openocd flex bison libncurses5-dev autoconf texinfo libftdi-dev libtool zlib1g-dev
 sudo apt-get install -y gcc-5-arm-linux-gnueabihf
 sudo apt-get install -y g++-5-arm-linux-gnueabihf
 sudo ln -s /usr/bin/arm-linux-gnueabihf-gcc-5 /usr/bin/arm-linux-gnueabihf-gcc
 sudo ln -s /usr/bin/arm-linux-gnueabihf-g++-5 /usr/bin/arm-linux-gnueabihf-g++
+sudo apt-get install -y libgstreamer1.0-0 libgstreamer1.0-dev libgstreamer-plugins-base1.0-0 libgstreamer-plugins-base1.0-dev libgstreamer-plugins-good1.0-0 libgstreamer-plugins-good1.0-dev
 
 # Install dependencies for running the ADS-B receiver in Commander
 sudo apt-get install -y rtl-sdr librtlsdr-dev
