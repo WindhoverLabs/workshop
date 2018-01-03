@@ -153,3 +153,15 @@ sudo dpkg -i dump1090-mutability_1.15~dev_*.deb
 # Install missing airliner build dependencies
 sudo apt-get install -y linux-libc-dev:i386
 
+# Install Commander requirements
+sudo apt-get install -y install python redis-server jq
+sudo -H pip install Django==1.10.2
+sudo -H pip install asgi-redis==1.2.0
+sudo -H pip install channels==0.17.3
+sudo -H pip install daphne==1.3.0
+sudo -H pip install multiprocessing==2.6.2.1
+sudo -H pip install psutil==3.4.2
+sudo -H pip install pypugjs==4.2.2
+sudo -H pip install requests==2.18.4
+sudo -H pip install websocket-client==0.44.0
+
