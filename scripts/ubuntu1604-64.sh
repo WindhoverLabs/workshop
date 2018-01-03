@@ -125,10 +125,7 @@ sudo apt-get install -y python-pip python-dev build-essential
 sudo -H pip install --upgrade pip 
 sudo -H pip install --upgrade virtualenv 
 sudo -H pip install catkin_pkg
-sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
-wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
-sudo apt-get update
-sudo apt-get install -y gazebo8 libgazebo8 libgazebo8-dev
+sudo apt-get install -y gazebo7 libgazebo7 libgazebo7-dev
 sudo apt-get install -y protobuf-compiler python-protobuf
 sudo apt-get install -y ant openjdk-8-jdk openjdk-8-jre 
 sudo apt-get remove -y modemmanager
@@ -141,6 +138,7 @@ sudo apt-get install -y g++-5-arm-linux-gnueabihf
 sudo ln -s /usr/bin/arm-linux-gnueabihf-gcc-5 /usr/bin/arm-linux-gnueabihf-gcc
 sudo ln -s /usr/bin/arm-linux-gnueabihf-g++-5 /usr/bin/arm-linux-gnueabihf-g++
 sudo apt-get install -y libgstreamer1.0-0 libgstreamer1.0-dev libgstreamer-plugins-base1.0-0 libgstreamer-plugins-base1.0-dev libgstreamer-plugins-good1.0-0 libgstreamer-plugins-good1.0-dev
+sudo apt-get install -y libimage-exiftool-perl
 
 # Install dependencies for running the ADS-B receiver in Commander
 sudo apt-get install -y rtl-sdr librtlsdr-dev
