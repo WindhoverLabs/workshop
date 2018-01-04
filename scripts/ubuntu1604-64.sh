@@ -98,70 +98,70 @@ sudo apt-get install -y meld
 sudo git config --global push.default simple
 sudo git config --global merge.tool meld
 sudo git config --global  diff.guitool meld
-f
+
 # Install Airliner build dependencies
 sudo apt-get install -y cmake
 
 # Install TFTP server
-sudo apt-get install -y xinetd tftpd tftp
-sudo cp /vagrant/etc/xinetd.d/tftp /etc/xinetd.d
-sudo mkdir /tftpboot
-sudo chmod -R 777 /tftpboot
-sudo chown -R nobody /tftpboot
-sudo service xinetd restart
+#sudo apt-get install -y xinetd tftpd tftp
+#sudo cp /vagrant/etc/xinetd.d/tftp /etc/xinetd.d
+#sudo mkdir /tftpboot
+#sudo chmod -R 777 /tftpboot
+#sudo chown -R nobody /tftpboot
+#sudo service xinetd restart
 
 # Install XSDK dependencies
-sudo apt-get install -y libncurses-dev xvfb chrpath socat autoconf libtool texinfo libsdl1.2-dev libglib2.0-dev zlib1g:i386 tofrodos iproute gawk gcc git-core make net-tools libncurses5-dev zlib1g-dev flex bison lib32z1 lib32ncurses5 lib32stdc++6 libselinux1 libbz2-1.0:i386 lib32ncurses5 lib32z1
+#sudo apt-get install -y libncurses-dev xvfb chrpath socat autoconf libtool texinfo libsdl1.2-dev libglib2.0-dev zlib1g:i386 tofrodos iproute gawk gcc git-core make net-tools libncurses5-dev zlib1g-dev flex bison lib32z1 lib32ncurses5 lib32stdc++6 libselinux1 libbz2-1.0:i386 lib32ncurses5 lib32z1
 # The following is a work around to get petalinux tools to work on ubuntu.
-echo "dash dash/sh boolean false" | sudo debconf-set-selections
-sudo DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash
+#echo "dash dash/sh boolean false" | sudo debconf-set-selections
+#sudo DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash
 
 # Install dependencies for PX4 and Gazebo
-sudo apt-get install -y libimage-exiftool-perl
-sudo apt-get install -y catkin
-sudo apt-get install -y python-jinja2
-sudo apt-get install -y python-empy
-sudo apt-get install -y python-pip python-dev build-essential 
-sudo -H pip install --upgrade pip 
-sudo -H pip install --upgrade virtualenv 
-sudo -H pip install catkin_pkg
-sudo apt-get install -y gazebo7 libgazebo7 libgazebo7-dev
-sudo apt-get install -y protobuf-compiler python-protobuf
-sudo apt-get install -y ant openjdk-8-jdk openjdk-8-jre 
-sudo apt-get remove -y modemmanager
-sudo apt-get install -y python-argparse git git-core wget zip python-empy qtcreator cmake build-essential genromfs
-sudo apt-get install -y python-dev
-sudo apt-get install -y libeigen3-dev libopencv-dev
-sudo apt-get install -y python-serial openocd flex bison libncurses5-dev autoconf texinfo libftdi-dev libtool zlib1g-dev
-sudo apt-get install -y gcc-5-arm-linux-gnueabihf
-sudo apt-get install -y g++-5-arm-linux-gnueabihf
-sudo ln -s /usr/bin/arm-linux-gnueabihf-gcc-5 /usr/bin/arm-linux-gnueabihf-gcc
-sudo ln -s /usr/bin/arm-linux-gnueabihf-g++-5 /usr/bin/arm-linux-gnueabihf-g++
-sudo apt-get install -y libgstreamer1.0-0 libgstreamer1.0-dev libgstreamer-plugins-base1.0-0 libgstreamer-plugins-base1.0-dev libgstreamer-plugins-good1.0-0 libgstreamer-plugins-good1.0-dev
-sudo apt-get install -y libimage-exiftool-perl
+#sudo apt-get install -y libimage-exiftool-perl
+#sudo apt-get install -y catkin
+#sudo apt-get install -y python-jinja2
+#sudo apt-get install -y python-empy
+#sudo apt-get install -y python-pip python-dev build-essential 
+#sudo -H pip install --upgrade pip 
+#sudo -H pip install --upgrade virtualenv 
+#sudo -H pip install catkin_pkg
+#sudo apt-get install -y gazebo7 libgazebo7 libgazebo7-dev
+#sudo apt-get install -y protobuf-compiler python-protobuf
+#sudo apt-get install -y ant openjdk-8-jdk openjdk-8-jre 
+#sudo apt-get remove -y modemmanager
+#sudo apt-get install -y python-argparse git git-core wget zip python-empy qtcreator cmake build-essential genromfs
+#sudo apt-get install -y python-dev
+#sudo apt-get install -y libeigen3-dev libopencv-dev
+#sudo apt-get install -y python-serial openocd flex bison libncurses5-dev autoconf texinfo libftdi-dev libtool zlib1g-dev
+#sudo apt-get install -y gcc-5-arm-linux-gnueabihf
+#sudo apt-get install -y g++-5-arm-linux-gnueabihf
+#sudo ln -s /usr/bin/arm-linux-gnueabihf-gcc-5 /usr/bin/arm-linux-gnueabihf-gcc
+#sudo ln -s /usr/bin/arm-linux-gnueabihf-g++-5 /usr/bin/arm-linux-gnueabihf-g++
+#sudo apt-get install -y libgstreamer1.0-0 libgstreamer1.0-dev libgstreamer-plugins-base1.0-0 libgstreamer-plugins-base1.0-dev libgstreamer-plugins-good1.0-0 libgstreamer-plugins-good1.0-dev
+#sudo apt-get install -y libimage-exiftool-perl
 
 # Install dependencies for running the ADS-B receiver in Commander
-sudo apt-get install -y rtl-sdr librtlsdr-dev
-git clone https://github.com/mutability/dump1090.git
-cd dump1090
-sudo dpkg-buildpackage -b
-cd ..
-export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
-sudo debconf-set-selections /vagrant/scripts/dump1090-mutability-preseed.txt
-sudo dpkg -i dump1090-mutability_1.15~dev_*.deb
+#sudo apt-get install -y rtl-sdr librtlsdr-dev
+#git clone https://github.com/mutability/dump1090.git
+#cd dump1090
+#sudo dpkg-buildpackage -b
+#cd ..
+#export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
+#sudo debconf-set-selections /vagrant/scripts/dump1090-mutability-preseed.txt
+#sudo dpkg -i dump1090-mutability_1.15~dev_*.deb
 
 # Install missing airliner build dependencies
-sudo apt-get install -y linux-libc-dev:i386
+#sudo apt-get install -y linux-libc-dev:i386
 
 # Install Commander requirements
-sudo apt-get install -y install python redis-server jq
-sudo -H pip install Django==1.10.2
-sudo -H pip install asgi-redis==1.2.0
-sudo -H pip install channels==0.17.3
-sudo -H pip install daphne==1.3.0
-sudo -H pip install multiprocessing==2.6.2.1
-sudo -H pip install psutil==3.4.2
-sudo -H pip install pypugjs==4.2.2
-sudo -H pip install requests==2.18.4
-sudo -H pip install websocket-client==0.44.0
+#sudo apt-get install -y python redis-server jq
+#sudo -H pip install Django==1.10.2
+#sudo -H pip install asgi-redis==1.2.0
+#sudo -H pip install channels==0.17.3
+#sudo -H pip install daphne==1.3.0
+#sudo -H pip install multiprocessing==2.6.2.1
+#sudo -H pip install psutil==3.4.2
+#sudo -H pip install pypugjs==4.2.2
+#sudo -H pip install requests==2.18.4
+#sudo -H pip install websocket-client==0.44.0
 
