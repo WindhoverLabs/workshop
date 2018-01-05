@@ -1,5 +1,5 @@
 #!/bin/bash
-export VBOX_VERSION_ID="0.10.5"
+export VBOX_VERSION_ID="0.10.6"
 vagrant destroy -f
 git clean -dxf
 rm -Rf sage

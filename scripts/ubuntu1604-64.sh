@@ -158,7 +158,8 @@ sudo apt-get install -y linux-libc-dev:i386
 # Install Commander requirements
 sudo apt-get install -y python redis-server jq
 sudo -H pip install Django==1.10.2
-sudo -H pip install asgi-redis==1.2.0
+sudo -H pip install asgiref==1.1.1
+sudo -H pip install asgi-redis==1.2.1
 sudo -H pip install channels==0.17.3
 sudo -H pip install daphne==1.3.0
 sudo -H pip install multiprocessing==2.6.2.1
