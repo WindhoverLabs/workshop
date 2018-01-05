@@ -11,7 +11,7 @@ WORKSHOP_BASEDIR=$PWD
 # Install the prereqs
 export DEBIAN_FRONTEND=noninteractive
 sudo apt-get -y update
-sudo apt-get -y install g++ g++-multilib gcc-multilib git gitk openjdk-8-jdk cinnamon maven libc-bin libc-dev-bin libc6-dev rpm nodejs-legacy npm alien doxygen vagrant libc6-dbg libc6-dbg:i386
+sudo apt-get -y install g++ g++-multilib gcc-multilib git gitk openjdk-8-jdk cinnamon maven rpm nodejs-legacy npm alien doxygen vagrant 
 sudo npm -g install bower gulp
 
 # Setup locales.  The most current Ubuntu 16.04 version has a bug causing the terminal
@@ -88,7 +88,7 @@ echo "export PATH=/opt/eclipse/:$PATH" >> ~/.bashrc
 rm eclipse-cpp-${ECLIPSE_VERSION}.tar.gz
 
 # Install additional development tools
-sudo apt-get install -y libc6-dbg:i386 valgrind gcovr lcov xsltproc graphviz  
+sudo apt-get install -y valgrind gcovr lcov xsltproc graphviz  
 
 # Install some nice to have stuff
 sudo apt-get install -y gedit htop gkrellm 
@@ -98,7 +98,7 @@ sudo apt-get install -y meld
 sudo git config --global push.default simple
 sudo git config --global merge.tool meld
 sudo git config --global  diff.guitool meld
-f
+
 # Install Airliner build dependencies
 sudo apt-get install -y cmake
 
@@ -125,7 +125,10 @@ sudo apt-get install -y python-pip python-dev build-essential
 sudo -H pip install --upgrade pip 
 sudo -H pip install --upgrade virtualenv 
 sudo -H pip install catkin_pkg
-sudo apt-get install -y gazebo7 libgazebo7 libgazebo7-dev
+sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
+wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install -y gazebo8 libgazebo8 libgazebo8-dev
 sudo apt-get install -y protobuf-compiler python-protobuf
 sudo apt-get install -y ant openjdk-8-jdk openjdk-8-jre 
 sudo apt-get remove -y modemmanager
@@ -133,11 +136,10 @@ sudo apt-get install -y python-argparse git git-core wget zip python-empy qtcrea
 sudo apt-get install -y python-dev
 sudo apt-get install -y libeigen3-dev libopencv-dev
 sudo apt-get install -y python-serial openocd flex bison libncurses5-dev autoconf texinfo libftdi-dev libtool zlib1g-dev
-sudo apt-get install -y gcc-5-arm-linux-gnueabihf
-sudo apt-get install -y g++-5-arm-linux-gnueabihf
-sudo ln -s /usr/bin/arm-linux-gnueabihf-gcc-5 /usr/bin/arm-linux-gnueabihf-gcc
-sudo ln -s /usr/bin/arm-linux-gnueabihf-g++-5 /usr/bin/arm-linux-gnueabihf-g++
-sudo apt-get install -y libgstreamer1.0-0 libgstreamer1.0-dev libgstreamer-plugins-base1.0-0 libgstreamer-plugins-base1.0-dev libgstreamer-plugins-good1.0-0 libgstreamer-plugins-good1.0-dev
+sudo apt-get install -y gcc-5-arm-linux-gnueabihf g++-5-arm-linux-gnueabihf
+#sudo ln -s /usr/bin/arm-linux-gnueabihf-gcc-5 /usr/bin/arm-linux-gnueabihf-gcc
+#sudo ln -s /usr/bin/arm-linux-gnueabihf-g++-5 /usr/bin/arm-linux-gnueabihf-g++
+sudo apt-get install -y gstreamer1.0-* libgstreamer1.0-*
 sudo apt-get install -y libimage-exiftool-perl
 
 # Install dependencies for running the ADS-B receiver in Commander
@@ -154,7 +156,7 @@ sudo dpkg -i dump1090-mutability_1.15~dev_*.deb
 sudo apt-get install -y linux-libc-dev:i386
 
 # Install Commander requirements
-sudo apt-get install -y install python redis-server jq
+sudo apt-get install -y python redis-server jq
 sudo -H pip install Django==1.10.2
 sudo -H pip install asgi-redis==1.2.0
 sudo -H pip install channels==0.17.3
