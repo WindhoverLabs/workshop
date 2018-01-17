@@ -14,6 +14,9 @@ sudo apt-get -y update
 sudo apt-get -y install g++ g++-multilib gcc-multilib git gitk openjdk-8-jdk cinnamon maven rpm nodejs-legacy npm alien doxygen vagrant 
 sudo npm -g install bower gulp
 
+# Install NTP so Jenkins can use the VM for builds without complaining about file timestamp problems.
+sudo apt-get install -y ntp
+
 # Setup locales.  The most current Ubuntu 16.04 version has a bug causing the terminal
 # to not open.  These steps will correct it.
 sudo dpkg-reconfigure -f noninteractive tzdata
