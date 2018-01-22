@@ -11,7 +11,7 @@ WORKSHOP_BASEDIR=$PWD
 # Install the prereqs
 export DEBIAN_FRONTEND=noninteractive
 sudo apt-get -y update
-sudo apt-get -y install g++ g++-multilib gcc-multilib git gitk openjdk-8-jdk cinnamon maven rpm nodejs-legacy npm alien doxygen vagrant 
+sudo apt-get -y install g++ g++-multilib gcc-multilib g++-multilib git gitk openjdk-8-jdk cinnamon maven rpm nodejs-legacy npm alien doxygen vagrant 
 sudo npm -g install bower gulp
 
 # Install NTP so Jenkins can use the VM for builds without complaining about file timestamp problems.
@@ -156,7 +156,7 @@ sudo debconf-set-selections /vagrant/scripts/dump1090-mutability-preseed.txt
 sudo dpkg -i dump1090-mutability_1.15~dev_*.deb
 
 # Install missing airliner build dependencies
-sudo apt-get install -y linux-libc-dev:i386
+#sudo apt-get install -y linux-libc-dev:i386
 
 # Install Commander requirements
 sudo apt-get install -y python redis-server jq
@@ -170,4 +170,14 @@ sudo -H pip install psutil==3.4.2
 sudo -H pip install pypugjs==4.2.2
 sudo -H pip install requests==2.18.4
 sudo -H pip install websocket-client==0.44.0
+sudo -H pip install coloredlogs==9.0
+sudo -H pip install redis_lock==0.2.0
+
+cd ${WORKSHOP_BASEDIR}
+wget http://jenkins.windhoverlabs.lan/external-packages/pypugjs/pypugjs-4.2.2.tar.gz
+tar -xvzf pypugjs-4.2.2.tar.gz
+cd pypugjs-4.2.2
+sudo -H python setup.py install
+
+
 
