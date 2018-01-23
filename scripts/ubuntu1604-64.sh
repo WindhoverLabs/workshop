@@ -8,6 +8,9 @@ cd "$(dirname "$0")"
 cd ..
 WORKSHOP_BASEDIR=$PWD
 
+# Write version file
+echo "Windhover Workshop v${VBOX_VERSION_ID}" > ~/VERSION
+
 # Install the prereqs
 export DEBIAN_FRONTEND=noninteractive
 sudo apt-get -y update
@@ -156,7 +159,7 @@ sudo debconf-set-selections /vagrant/scripts/dump1090-mutability-preseed.txt
 sudo dpkg -i dump1090-mutability_1.15~dev_*.deb
 
 # Install missing airliner build dependencies
-#sudo apt-get install -y linux-libc-dev:i386
+sudo apt-get install -y linux-libc-dev:i386
 
 # Install Commander requirements
 sudo apt-get install -y python redis-server jq
@@ -178,6 +181,4 @@ wget http://jenkins.windhoverlabs.lan/external-packages/pypugjs/pypugjs-4.2.2.ta
 tar -xvzf pypugjs-4.2.2.tar.gz
 cd pypugjs-4.2.2
 sudo -H python setup.py install
-
-
 
