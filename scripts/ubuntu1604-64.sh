@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Copy in version ID file
+cp /vagrant/VERSION ~
+
 export YAMCS_VERSION=3.2.2+r6405b1e-10
 export YAMCS_CFS_VERSION=1.0.3
 export ECLIPSE_VERSION=oxygen-M7-linux-gtk-x86_64
@@ -187,7 +190,7 @@ echo 'export PATH="/opt/gcc-linaro-4.9-2016.02-x86_64_arm-linux-gnueabihf/bin/:$
 source ~/.bashrc
 
 # Install joystick driver to flying in SITL
-sudo apt install -y joystick
+sudo apt-get install -y joystick
 
 # Install libc6-dbg to correct a valgrind memcheck issue.
 sudo apt-get install -y libc6-dbg libc6-dbg:i386
