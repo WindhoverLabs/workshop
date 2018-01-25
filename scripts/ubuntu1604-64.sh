@@ -179,3 +179,12 @@ tar -xvzf pypugjs-4.2.2.tar.gz
 cd pypugjs-4.2.2
 sudo -H python setup.py install
 
+# Install Linaro toolchain
+wget https://releases.linaro.org/components/toolchain/binaries/4.9-2016.02/arm-linux-gnueabihf/gcc-linaro-4.9-2016.02-x86_64_arm-linux-gnueabihf.tar.xz
+tar -xvf gcc-linaro-4.9-2016.02-x86_64_arm-linux-gnueabihf.tar.xz
+sudo cp -R gcc-linaro-4.9-2016.02-x86_64_arm-linux-gnueabihf /opt
+echo 'export PATH="/opt/gcc-linaro-4.9-2016.02-x86_64_arm-linux-gnueabihf/bin/:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+
+# Install joystick driver to flying in SITL
+sudo apt install -y joystick
