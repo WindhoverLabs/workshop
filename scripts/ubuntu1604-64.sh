@@ -8,9 +8,6 @@ cd "$(dirname "$0")"
 cd ..
 WORKSHOP_BASEDIR=$PWD
 
-# Write version file
-echo "Windhover Workshop v${VBOX_VERSION_ID}" > ~/VERSION
-
 # Install the prereqs
 export DEBIAN_FRONTEND=noninteractive
 sudo apt-get -y update

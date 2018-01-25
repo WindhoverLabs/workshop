@@ -1,11 +1,14 @@
 #!/bin/bash
-export VBOX_VERSION_ID="0.11.3"
+export VBOX_VERSION_ID="0.11.4"
 vagrant destroy -f
 git clean -dxf
 rm -Rf sage
 git clone git@bitbucket.org:windhoverlabs/sage.git
 
+# Provision the virtual machine
 vagrant up
+# Add the version ID file.
+vagrant ssh -c 'echo "Windhover Workshop v${VBOX_VERSION_ID}" > ~/VERSION'
 vagrant halt
 vagrant package --output workshop_vb_${VBOX_VERSION_ID}.box --vagrantfile Vagrantfile_user
 openssl sha1 workshop_vb_${VBOX_VERSION_ID}.box
