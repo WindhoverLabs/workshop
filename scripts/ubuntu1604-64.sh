@@ -188,3 +188,6 @@ source ~/.bashrc
 
 # Install joystick driver to flying in SITL
 sudo apt install -y joystick
+
+# Install libc6-dbg to correct a valgrind memcheck issue.
+sudo apt-get install -y libc6-dbg libc6-dbg:i386
