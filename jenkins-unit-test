@@ -1,0 +1,34 @@
+#!/bin/bash
+cd ~
+
+# Add the readonly ssh keys for unit testing
+cp -R /vagrant/ssh ~/.ssh
+
+# Get it ready for the repos
+mkdir git
+cd git
+git clone git@bitbucket.org:windhoverlabs/airliner.git
+
+# Build all the Airliner builds
+cd airliner
+make typhoon_h480/sitl
+echo $?
+make ocpoc/default
+echo $?
+
+# Test all the SITL builds
+cd build/typhoon_h480
+ctest -T Test --timeout 1200 --no-compress-output
+echo $?
+
+# Delete the repos
+cd ~
+rm -Rf git
+
+# Delete the readonly ssh keys
+rm -Rf ~/.ssh/config
+rm -Rf ~/.ssh/id_rsa_airliner
+rm -Rf  ~/.ssh/id_rsa_sitl_gazebo
+rm -Rf  ~/.ssh/id_rsa_px4
+
+

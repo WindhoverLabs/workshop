@@ -1,0 +1,6 @@
+host www.bitbucket.com
+  HostName www.bitbucket.com
+  IdentifyFile ~/.ssh/id_rsa_airliner
+  IdentifyFile ~/.ssh/id_rsa_sitl_gazebo
+  IdentifyFile ~/.ssh/id_rsa_px4
+  User git

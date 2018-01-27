@@ -1,21 +1,22 @@
 #!/bin/bash
 export WORKSHOP_VERSION_ID="0.11.5"
-vagrant destroy -f
-git clean -dxf
-rm -Rf sage
-git clone git@bitbucket.org:windhoverlabs/sage.git
+###vagrant destroy -f
+###git clean -dxf
+###rm -Rf sage
+###git clone git@bitbucket.org:windhoverlabs/sage.git
 
 # Add the version ID file.
 echo "Windhover Workshop ${WORKSHOP_VERSION_ID}"  > VERSION
 
 # Provision the virtual machine
 vagrant up
+vagrant ssh -c "/vagrant/jenkins-unit-test"
 vagrant halt
-vagrant package --output workshop_vb_${WORKSHOP_VERSION_ID}.box --vagrantfile Vagrantfile_user
-openssl sha1 workshop_vb_${WORKSHOP_VERSION_ID}.box
-filehash=`openssl dgst -sha1 workshop_vb_${WORKSHOP_VERSION_ID}.box | sed 's/^.*= //'`
-cp workshop_vb_${WORKSHOP_VERSION_ID}.box /var/www/html/releases/workshop/
-vagrant destroy -f
+###vagrant package --output workshop_vb_${WORKSHOP_VERSION_ID}.box --vagrantfile Vagrantfile_user
+###openssl sha1 workshop_vb_${WORKSHOP_VERSION_ID}.box
+###filehash=`openssl dgst -sha1 workshop_vb_${WORKSHOP_VERSION_ID}.box | sed 's/^.*= //'`
+###cp workshop_vb_${WORKSHOP_VERSION_ID}.box /var/www/html/releases/workshop/
+###vagrant destroy -f
 
 #vagrant up --provider vmware_workstation
 #vagrant halt
@@ -25,4 +26,4 @@ vagrant destroy -f
 #cp workshop_vmware_${VBOX_VERSION_ID}.box /var/www/html/workshop/
 #vagrant destroy -f
 
-python append-to-json.py --url-vb "http://jenkins.windhoverlabs.lan/releases/workshop/workshop_vb_${WORKSHOP_VERSION_ID}.box" --checksum-vb "$filehash" --version "${WORKSHOP_VERSION_ID}" --json-file "/var/www/html/releases/workshop/workshop.json"
+###python append-to-json.py --url-vb "http://jenkins.windhoverlabs.lan/releases/workshop/workshop_vb_${WORKSHOP_VERSION_ID}.box" --checksum-vb "$filehash" --version "${WORKSHOP_VERSION_ID}" --json-file "/var/www/html/releases/workshop/workshop.json"
