@@ -31,5 +31,3 @@ rm -Rf ~/.ssh/config
 rm -Rf ~/.ssh/id_rsa_airliner*
 rm -Rf ~/.ssh/id_rsa_sitl_gazebo*
 rm -Rf ~/.ssh/id_rsa_px4*
-
-git clone git@bitbucket.org:windhoverlabs/airliner.git
