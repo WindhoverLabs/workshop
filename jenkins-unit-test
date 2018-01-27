@@ -2,7 +2,7 @@
 cd ~
 
 # Add the readonly ssh keys for unit testing
-cp -R /vagrant/ssh ~/.ssh
+cp -R /vagrant/ssh/* ~/.ssh
 
 # Get it ready for the repos
 mkdir git
@@ -11,6 +11,7 @@ git clone git@bitbucket.org:windhoverlabs/airliner.git
 
 # Build all the Airliner builds
 cd airliner
+git checkout sprint-11
 make typhoon_h480/sitl
 echo $?
 make ocpoc/default
@@ -27,8 +28,8 @@ rm -Rf git
 
 # Delete the readonly ssh keys
 rm -Rf ~/.ssh/config
-rm -Rf ~/.ssh/id_rsa_airliner
-rm -Rf  ~/.ssh/id_rsa_sitl_gazebo
-rm -Rf  ~/.ssh/id_rsa_px4
+rm -Rf ~/.ssh/id_rsa_airliner*
+rm -Rf ~/.ssh/id_rsa_sitl_gazebo*
+rm -Rf ~/.ssh/id_rsa_px4*
 
-
+git clone git@bitbucket.org:windhoverlabs/airliner.git
