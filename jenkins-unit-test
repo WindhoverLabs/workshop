@@ -3,6 +3,9 @@ cd ~
 
 # Add the readonly ssh keys for unit testing
 cp -R /vagrant/ssh/* ~/.ssh
+chmod 600 ~/.ssh/id_rsa_*
+chmod 644 ~/.ssh/id_rsa_*.pub
+
 
 # Get it ready for the repos
 mkdir git
