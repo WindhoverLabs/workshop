@@ -17,8 +17,8 @@ cd airliner
 git checkout sprint-11
 make typhoon_h480/sitl
 echo $?
-make ocpoc/default
-echo $?
+#make ocpoc/default
+#echo $?
 
 # Test all the SITL builds
 cd build/typhoon_h480
