@@ -21,7 +21,7 @@ echo $?
 #echo $?
 
 # Test all the SITL builds
-cd build/typhoon_h480
+cd build/typhoon_h480/sitl
 ctest -T Test --timeout 1200 --no-compress-output
 echo $?
 
