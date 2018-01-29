@@ -20,7 +20,7 @@ git submodule update --init --recursive
 mkdir -p build/typhoon_h480/sitl
 cd build/typhoon_h480
 cmake -DBUILDNAME:STRING=typhoon_h480/sitl -G"Eclipse CDT4 - Unix Makefiles" -DCMAKE_ECLIPSE_GENERATE_SOURCE_PROJECT=TRUE CMAKE_BUILD_TYPE=Debug ../..
-cd target
+#cd target
 make VERBOSE=1
 cd ~/airliner
 #make typhoon_h480/sitl
