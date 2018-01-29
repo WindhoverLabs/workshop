@@ -15,15 +15,7 @@ git clone git@bitbucket.org:windhoverlabs/airliner.git
 # Build all the Airliner builds
 cd airliner
 git checkout sprint-11
-# TODO: Remove temporary debugging kludge
-git submodule update --init --recursive
-mkdir -p build/typhoon_h480/sitl
-cd build/typhoon_h480
-cmake -DBUILDNAME:STRING=typhoon_h480/sitl -G"Eclipse CDT4 - Unix Makefiles" -DCMAKE_ECLIPSE_GENERATE_SOURCE_PROJECT=TRUE CMAKE_BUILD_TYPE=Debug ../..
-#cd target
-make VERBOSE=1
-cd ~/airliner
-#make typhoon_h480/sitl
+make typhoon_h480/sitl
 echo $?
 #make ocpoc/default
 #echo $?
