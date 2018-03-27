@@ -145,7 +145,7 @@ sudo apt-get install -y python-serial openocd flex bison libncurses5-dev autocon
 sudo apt-get install -y gcc-5-arm-linux-gnueabihf g++-5-arm-linux-gnueabihf
 #sudo ln -s /usr/bin/arm-linux-gnueabihf-gcc-5 /usr/bin/arm-linux-gnueabihf-gcc
 #sudo ln -s /usr/bin/arm-linux-gnueabihf-g++-5 /usr/bin/arm-linux-gnueabihf-g++
-sudo apt-get install -y gstreamer1.0-* libgstreamer1.0-*
+sudo apt-get install -y gstreamer1.0-plugin* libgstreamer1.0-*
 sudo apt-get install -y libimage-exiftool-perl
 
 # Install dependencies for running the ADS-B receiver in Commander
