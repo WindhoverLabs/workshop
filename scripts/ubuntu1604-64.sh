@@ -90,7 +90,7 @@ echo "WORKSHOP_BASEDIR = $WORKSHOP_BASEDIR"
 tar -xzf eclipse-cpp-${ECLIPSE_VERSION}.tar.gz
 sudo mv eclipse /opt/
 sudo chown root:root /opt/eclipse
-echo "export PATH=/opt/eclipse/:$PATH" >> ~/.bashrc
+echo 'export PATH="/opt/eclipse/:$PATH"' >> ~/.bashrc
 rm eclipse-cpp-${ECLIPSE_VERSION}.tar.gz
 
 # Install additional development tools
