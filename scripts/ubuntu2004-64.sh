@@ -15,9 +15,16 @@ WORKSHOP_BASEDIR=$PWD
 
 # Install the prereqs
 export DEBIAN_FRONTEND=noninteractive
+sudo add-apt-repository universe
+sudo apt update
+sudo apt-get install -y libeigen3-dev
+sudo apt-get -y install python2
+curl https://bootstrap.pypa.io/get-pip.py --output get-pip.py
+sudo python2 get-pip.py
 sudo apt-get -y update
-sudo apt-get -y install g++ g++-multilib gcc-multilib g++-multilib git gitk openjdk-8-jdk cinnamon maven rpm nodejs libnode64 npm alien doxygen vagrant 
+sudo apt-get -y install g++ g++-multilib gcc-multilib g++-multilib git gitk openjdk-8-jdk cinnamon maven rpm nodejs libnode64 npm alien doxygen vagrant  python3-virtualenv
 sudo npm -g install bower gulp
+sudo apt-get -y install libboost-timer-dev
 
 # Install NTP so Jenkins can use the VM for builds without complaining about file timestamp problems.
 sudo apt-get install -y ntp
@@ -109,6 +116,8 @@ echo "dash dash/sh boolean false" | sudo debconf-set-selections
 sudo DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash
 
 # Install dependencies for PX4 and Gazebo
+sudo apt-get install -y libgazebo9-dev
+sudo apt-get install -y libopencv-dev python3-opencv
 sudo apt-get install -y libimage-exiftool-perl
 sudo apt-get install -y catkin
 sudo apt-get install -y python-jinja2
