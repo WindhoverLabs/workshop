@@ -33,6 +33,8 @@ PRGDIR=`dirname "$PRG"`
 # cd into the workspace to support relative links in configuration files
 cd "$WORKSPACE_PATH"
 
+echo $WORKSPACE_PATH
+
 # Remove user classpath, but allow custom classpath additions via setenv.sh
 CLASSPATH=
 
@@ -44,6 +46,8 @@ if [ "x$CLASSPATH" != x ]; then
   CLASSPATH="$CLASSPATH:"
 fi
 
+echo ${PWD}
+
 export CLASSPATH="$CLASSPATH$YAMCS_HOME/lib/*:$YAMCS_HOME/lib/ext/*:$WORKSPACE_PATH/lib/*"
 
 if [ -d "$JAVA_HOME" ]; then
@@ -51,4 +55,6 @@ if [ -d "$JAVA_HOME" ]; then
 else
   _RUNJAVA=java
 fi
+exec "$_RUNJAVA" $JAVA_OPTS $JMX_OPTS -Djava.util.logging.manager=org.yamcs.logging.YamcsLogManager -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/ org.yamcs.YamcsServer
+
                                                                                                                                                                                                  1,1           Top

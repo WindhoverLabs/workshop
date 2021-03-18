@@ -1,64 +1,24 @@
 #!/bin/bash
+#This script assumes that build_image.sh has been called.
 
 PRG="$0"
 YAMCS_HOME="$1"
 WORKSPACE_PATH="$2"
-CONTAINER_NAME= "$3"
+CONTAINER_NAME="$3"
 
-#Build the image
-docker build -t viper:yamcs .
+IMAGE_NAME="viper:yamcs"
+YAMCS_ROOT="/yamcs"
+START_YAMCS="start_yamcs.sh"
+START_YAMCS_IN_CONATINER=$YAMCS_ROOT/$START_YAMCS
 
-# shellcheck disable=SC2006
-CONTAINER_ID=`docker run -dit -P --name "$CONTAINER_NAME" -v $YAMCS_HOME:/yamcs viper:yamcs`
+# Create Volume and container
+CONTAINER_ID=$(docker run -dit -P --name "$CONTAINER_NAME" -v "$YAMCS_HOME":"$YAMCS_ROOT" "$IMAGE_NAME")
 
-#echo "$CONTAINER_ID"
-docker cp "$WORKSPACE_PATH" "$CONTAINER_ID":/yamcs/
-docker attach "$CONTAINER_ID"
-## Variables
-## ---------
-## DO NOT MODIFY THIS FILE
-## Instead set variables via a script YAMCS_HOME/bin/setenv.sh
-##
-## JMX           Set to 1 to allow remote JMX connections (jconsole).
-##               (only temporarily for debugging purposes !)
-##
-## JAVA_OPTS     Java runtime options
-##
-## CLASSPATH     Custom classpath additions
-#
-## resolve links - $0 may be a softlink
+docker cp "$WORKSPACE_PATH" "$CONTAINER_ID":$YAMCS_ROOT
+docker cp start_yamcs.sh "$CONTAINER_ID":$YAMCS_ROOT
 
-while [ -h "$PRG" ]; do
-  ls=`ls -ld "$PRG"`
-  link=`expr "$ls" : '.*-> \(.*\)$'`
-  if expr "$link" : '/.*' > /dev/null; then
-    PRG="$link"
-  else
-    PRG=`dirname "$PRG"`/"$link"
-  fi
-done
+CONTAINER_WORKSPACE="$YAMCS_ROOT/$(basename "$WORKSPACE_PATH")"
 
-# Get standard environment variables
-PRGDIR=`dirname "$PRG"`
+DOCKER_COMMAND="$START_YAMCS_IN_CONATINER $YAMCS_ROOT $CONTAINER_WORKSPACE"
 
-# cd into the workspace to support relative links in configuration files
-cd "/yamcs/$WORKSPACE_PATH"
-
-# Remove user classpath, but allow custom classpath additions via setenv.sh
-CLASSPATH=
-
-if [ -r bin/setenv.sh ]; then
-  . bin/setenv.sh
-fi
-
-if [ "x$CLASSPATH" != x ]; then
-  CLASSPATH="$CLASSPATH:"
-fi
-
-export CLASSPATH="$CLASSPATH$YAMCS_HOME/lib/*:$YAMCS_HOME/lib/ext/*:/yamcs/$WORKSPACE_PATH/lib/*"
-
-if [ -d "$JAVA_HOME" ]; then
-  _RUNJAVA="$JAVA_HOME/bin/java"
-else
-  _RUNJAVA=java
-fi
+docker exec -it "$CONTAINER_ID"  /bin/sh -c "$DOCKER_COMMAND"
